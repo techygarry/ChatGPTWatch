@@ -142,6 +142,12 @@ struct ChatDetailView: View {
             } else if !displayedStreamText.isEmpty {
                 displayedStreamText = ""
             }
+
+            // Auto-speak when response finishes
+            if let response = appState.chatVM.lastCompletedResponse {
+                appState.chatVM.lastCompletedResponse = nil
+                appState.ttsService.speak(response)
+            }
         }
     }
 

@@ -16,6 +16,9 @@ final class ChatViewModel {
     var stateVersion = 0
     private func notifyChange() { stateVersion += 1 }
 
+    // Called when a response finishes streaming — views can use this for auto-speak
+    var lastCompletedResponse: String?
+
     let openAIService: OpenAIService
     private var modelContext: ModelContext?
     private var streamTask: Task<Void, Never>?
@@ -130,6 +133,7 @@ final class ChatViewModel {
                     self.saveCurrentConversation()
                     CacheManager.shared.cacheResponse(query: queryText, response: fullText)
                     HapticManager.shared.play(.responseComplete)
+                    self.lastCompletedResponse = fullText
                     self.notifyChange()
                 }
             } catch {
