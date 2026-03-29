@@ -115,7 +115,8 @@ struct NewCodexTaskView: View {
                                 Spacer()
                             }
                             .padding(DesignTokens.Spacing.sm)
-                            .glassEffect(.regular, in: .rect(cornerRadius: DesignTokens.Radius.small))
+                            .background(.ultraThinMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous))
                         }
                         .buttonStyle(.plain)
                     }
@@ -138,7 +139,7 @@ struct NewCodexTaskView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, DesignTokens.Spacing.xs)
                 }
-                .buttonStyle(.glassProminent)
+                .buttonStyle(.borderedProminent)
                 .tint(DesignTokens.Colors.codexPurple)
                 .disabled(taskInput.trimmed.isEmpty || appState.codexVM.isCreating)
 

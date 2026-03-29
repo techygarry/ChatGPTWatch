@@ -22,7 +22,8 @@ struct StatusBadge: View {
         }
         .padding(.horizontal, DesignTokens.Spacing.sm)
         .padding(.vertical, 3)
-        .glassEffect(.regular.tint(statusColor), in: .capsule)
+        .background(statusColor.opacity(0.15))
+        .clipShape(Capsule())
     }
 
     private var statusColor: Color {

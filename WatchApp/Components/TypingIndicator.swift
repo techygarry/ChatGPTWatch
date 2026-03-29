@@ -28,7 +28,8 @@ struct TypingIndicator: View {
             }
             .padding(.horizontal, DesignTokens.Spacing.md)
             .padding(.vertical, DesignTokens.Spacing.sm)
-            .glassEffect(.regular, in: .rect(cornerRadius: DesignTokens.Radius.medium))
+            .background(.ultraThinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
 
             Spacer(minLength: 16)
         }

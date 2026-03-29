@@ -53,12 +53,12 @@ struct VoiceModeView: View {
                         .font(.system(size: 22))
                         .foregroundStyle(isListening ? .white : DesignTokens.Colors.chatGPTGreen)
                         .frame(width: 60, height: 60)
-                        .glassEffect(
+                        .background(
                             isListening
-                                ? .regular.tint(DesignTokens.Colors.chatGPTGreen)
-                                : .regular,
-                            in: .circle
+                                ? AnyShapeStyle(DesignTokens.Colors.chatGPTGreen)
+                                : AnyShapeStyle(.ultraThinMaterial)
                         )
+                        .clipShape(Circle())
                 }
             }
             .buttonStyle(.plain)
@@ -81,7 +81,7 @@ struct VoiceModeView: View {
                     Label("Send", systemImage: "arrow.up")
                         .font(DesignTokens.Typography.bodyMedium)
                 }
-                .buttonStyle(.glassProminent)
+                .buttonStyle(.borderedProminent)
                 .tint(DesignTokens.Colors.chatGPTGreen)
             }
         }

@@ -13,17 +13,13 @@ struct CodexSessionsView: View {
                 // Relay status
                 HStack(spacing: DesignTokens.Spacing.sm) {
                     Circle()
-                        .fill(relayOnline ? DesignTokens.Colors.successGreen : DesignTokens.Colors.errorRed)
+                        .fill(checkingRelay ? Color.gray : (relayOnline ? DesignTokens.Colors.successGreen : DesignTokens.Colors.errorRed))
                         .frame(width: 6, height: 6)
-                    Text(relayOnline ? "Relay connected" : "Relay offline")
+                    Text(checkingRelay ? "Checking..." : (relayOnline ? "Relay connected" : "Relay offline"))
                         .font(DesignTokens.Typography.micro)
-                        .foregroundStyle(relayOnline ? DesignTokens.Colors.successGreen : DesignTokens.Colors.errorRed)
+                        .foregroundStyle(.secondary)
                     Spacer()
-                    if checkingRelay {
-                        ProgressView()
-                            .scaleEffect(0.5)
-                            .frame(width: 12, height: 12)
-                    } else {
+                    if !checkingRelay {
                         Button {
                             checkRelay()
                         } label: {
@@ -34,37 +30,32 @@ struct CodexSessionsView: View {
                         .buttonStyle(.plain)
                     }
                 }
-                .padding(.horizontal, DesignTokens.Spacing.sm)
-                .padding(.vertical, DesignTokens.Spacing.xs)
-                .glassEffect(.regular, in: .capsule)
+                .padding(.horizontal, DesignTokens.Spacing.md)
+                .padding(.vertical, DesignTokens.Spacing.sm)
+                .background(.ultraThinMaterial)
+                .clipShape(Capsule())
 
                 if !relayOnline && !checkingRelay {
-                    // Offline instructions
                     VStack(alignment: .leading, spacing: DesignTokens.Spacing.sm) {
                         Label("Setup Required", systemImage: "exclamationmark.triangle.fill")
                             .font(DesignTokens.Typography.caption)
                             .foregroundStyle(DesignTokens.Colors.warningAmber)
 
-                        Text("Start the relay server on your Mac:")
+                        Text("Start relay on your Mac:")
                             .font(DesignTokens.Typography.micro)
                             .foregroundStyle(.secondary)
 
-                        Text("cd codex-relay && node server.js")
+                        Text("cd codex-relay\nnode server.js")
                             .font(DesignTokens.Typography.code)
                             .foregroundStyle(DesignTokens.Colors.codexPurple)
 
-                        Text("Then expose via Cloudflare Tunnel or update the relay URL in the app.")
+                        Text("Then expose via Cloudflare Tunnel.")
                             .font(DesignTokens.Typography.micro)
                             .foregroundStyle(.tertiary)
                     }
-                    .cardStyle()
-
-                    if let error = appState.codexVM.errorMessage {
-                        Label(error, systemImage: "xmark.circle")
-                            .font(DesignTokens.Typography.micro)
-                            .foregroundStyle(DesignTokens.Colors.errorRed)
-                            .padding(.horizontal, DesignTokens.Spacing.sm)
-                    }
+                    .padding(DesignTokens.Spacing.md)
+                    .background(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
                 }
 
                 // New Task
@@ -72,19 +63,20 @@ struct CodexSessionsView: View {
                     NewCodexTaskView()
                 } label: {
                     HStack(spacing: DesignTokens.Spacing.sm) {
-                        Image(systemName: "plus")
-                            .font(.system(size: 13, weight: .bold))
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 18))
                             .foregroundStyle(DesignTokens.Colors.codexPurple)
                         Text("New Task")
                             .font(DesignTokens.Typography.bodyMedium)
-                            .foregroundStyle(DesignTokens.Colors.codexPurple)
+                            .foregroundStyle(.white)
                         Spacer()
                         Image(systemName: "chevron.right")
                             .font(.system(size: 9))
-                            .foregroundStyle(.tertiary)
+                            .foregroundStyle(.white.opacity(0.5))
                     }
                     .padding(DesignTokens.Spacing.md)
-                    .glassEffect(.regular.tint(DesignTokens.Colors.codexPurple), in: .rect(cornerRadius: DesignTokens.Radius.medium))
+                    .background(DesignTokens.Colors.codexPurple.opacity(0.25))
+                    .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
                 }
                 .buttonStyle(.plain)
                 .disabled(!relayOnline)
@@ -117,6 +109,13 @@ struct CodexSessionsView: View {
                     ProgressView()
                         .tint(DesignTokens.Colors.codexPurple)
                         .padding()
+                }
+
+                if let error = appState.codexVM.errorMessage {
+                    Text(error)
+                        .font(DesignTokens.Typography.micro)
+                        .foregroundStyle(DesignTokens.Colors.errorRed)
+                        .padding(DesignTokens.Spacing.sm)
                 }
             }
             .padding(.horizontal, DesignTokens.Spacing.xs)

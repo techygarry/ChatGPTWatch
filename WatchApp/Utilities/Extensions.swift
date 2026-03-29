@@ -48,7 +48,8 @@ extension View {
     func cardStyle() -> some View {
         self
             .padding(DesignTokens.Spacing.md)
-            .glassEffect(.regular, in: .rect(cornerRadius: DesignTokens.Radius.medium))
+            .background(.ultraThinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
     }
 
     func glassCard() -> some View {

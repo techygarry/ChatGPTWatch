@@ -72,7 +72,7 @@ struct ChatDetailView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, DesignTokens.Spacing.xs)
                 }
-                .buttonStyle(.glass)
+                .buttonStyle(.bordered)
                 .tint(DesignTokens.Colors.chatGPTGreen)
                 .padding(.horizontal, DesignTokens.Spacing.sm)
             }
@@ -96,7 +96,7 @@ struct ChatDetailView: View {
                             .font(.system(size: 12))
                             .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
                     }
-                    .buttonStyle(.glass)
+                    .buttonStyle(.bordered)
 
                     TextField("Message", text: $inputText)
                         .font(DesignTokens.Typography.body)

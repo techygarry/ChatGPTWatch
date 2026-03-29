@@ -14,21 +14,24 @@ struct ConversationsListView: View {
                     NewChatView()
                 } label: {
                     HStack(spacing: DesignTokens.Spacing.sm) {
-                        Image(systemName: "plus")
-                            .font(.system(size: 13, weight: .bold))
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 18))
                             .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
                         Text("New Chat")
                             .font(DesignTokens.Typography.bodyMedium)
-                            .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
+                            .foregroundStyle(.white)
                         Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 9))
+                            .foregroundStyle(.white.opacity(0.5))
                     }
                     .padding(DesignTokens.Spacing.md)
-                    .glassEffect(.regular.tint(DesignTokens.Colors.chatGPTGreen), in: .rect(cornerRadius: DesignTokens.Radius.medium))
+                    .background(DesignTokens.Colors.chatGPTGreen.opacity(0.25))
+                    .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
                 }
                 .buttonStyle(.plain)
 
                 if convList.isEmpty {
-                    // Empty state
                     VStack(spacing: DesignTokens.Spacing.md) {
                         Image(systemName: "bubble.left.and.bubble.right")
                             .font(.system(size: 28))
@@ -95,6 +98,7 @@ struct ConversationRow: View {
             }
         }
         .padding(DesignTokens.Spacing.md)
-        .glassEffect(.regular, in: .rect(cornerRadius: DesignTokens.Radius.medium))
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
     }
 }

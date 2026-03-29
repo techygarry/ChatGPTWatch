@@ -18,7 +18,7 @@ final class CodexService: @unchecked Sendable {
             return custom
         }
         // Default: local Mac relay
-        return "https://limited-claims-grateful-allan.trycloudflare.com"
+        return "https://balance-passion-minnesota-excluding.trycloudflare.com"
     }
 
     // MARK: - Create Task on Mac via Relay

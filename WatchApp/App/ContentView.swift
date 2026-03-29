@@ -8,13 +8,11 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $currentPage) {
-            // Page 1: Home
             NavigationStack {
                 HomeView()
             }
             .tag(0)
 
-            // Page 2: Settings (horizontal swipe)
             NavigationStack {
                 SettingsView()
             }
@@ -128,18 +126,20 @@ struct HomeCard: View {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.xxs) {
                 Text(title)
                     .font(DesignTokens.Typography.sectionHeader)
+                    .foregroundStyle(.white)
                 Text(subtitle)
                     .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.white.opacity(0.7))
             }
 
             Spacer()
 
             Image(systemName: "chevron.right")
                 .font(.system(size: 10, weight: .semibold))
-                .foregroundStyle(.tertiary)
+                .foregroundStyle(.white.opacity(0.5))
         }
         .padding(DesignTokens.Spacing.md)
-        .glassEffect(.regular.tint(tint), in: .rect(cornerRadius: DesignTokens.Radius.medium))
+        .background(tint.opacity(0.25))
+        .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
     }
 }

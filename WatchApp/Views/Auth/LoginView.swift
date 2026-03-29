@@ -41,7 +41,7 @@ struct LoginView: View {
                         }
                         .frame(maxWidth: .infinity)
                     }
-                    .buttonStyle(.glassProminent)
+                    .buttonStyle(.borderedProminent)
                     .tint(DesignTokens.Colors.chatGPTGreen)
                     .disabled(apiKey.trimmed.isEmpty || isValidating)
 

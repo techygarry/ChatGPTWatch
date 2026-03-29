@@ -34,14 +34,14 @@ struct SettingsView: View {
                                 showAPIKey = true
                             }
                             .font(DesignTokens.Typography.micro)
-                            .buttonStyle(.glass)
+                            .buttonStyle(.bordered)
 
                             Button("Sign Out") {
                                 appState.authService.signOut()
                                 appState.settingsVM.clearAllData()
                             }
                             .font(DesignTokens.Typography.micro)
-                            .buttonStyle(.glass)
+                            .buttonStyle(.bordered)
                             .tint(DesignTokens.Colors.errorRed)
                         }
                     } else {
@@ -58,7 +58,7 @@ struct SettingsView: View {
                             showAPIKey = true
                         }
                         .font(DesignTokens.Typography.caption)
-                        .buttonStyle(.glassProminent)
+                        .buttonStyle(.borderedProminent)
                         .tint(DesignTokens.Colors.chatGPTGreen)
                     }
                 }
@@ -113,7 +113,7 @@ struct SettingsView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, DesignTokens.Spacing.sm)
                 }
-                .buttonStyle(.glass)
+                .buttonStyle(.bordered)
                 .tint(DesignTokens.Colors.errorRed)
 
                 // Version
@@ -163,10 +163,10 @@ struct APIKeyInputView: View {
 
             HStack(spacing: DesignTokens.Spacing.sm) {
                 Button("Cancel") { dismiss() }
-                    .buttonStyle(.glass)
+                    .buttonStyle(.bordered)
 
                 Button("Save") { onSave() }
-                    .buttonStyle(.glassProminent)
+                    .buttonStyle(.borderedProminent)
                     .tint(DesignTokens.Colors.chatGPTGreen)
                     .disabled(apiKey.trimmed.isEmpty)
             }

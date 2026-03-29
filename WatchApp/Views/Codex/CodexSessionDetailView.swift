@@ -114,7 +114,7 @@ struct CodexSessionDetailView: View {
                                 appState.codexVM.cancelTask(id: sessionId)
                             }
                             .font(DesignTokens.Typography.micro)
-                            .buttonStyle(.glass)
+                            .buttonStyle(.bordered)
                             .tint(DesignTokens.Colors.errorRed)
                         }
 
@@ -122,7 +122,7 @@ struct CodexSessionDetailView: View {
                             appState.codexVM.loadSession(id: sessionId)
                         }
                         .font(DesignTokens.Typography.micro)
-                        .buttonStyle(.glass)
+                        .buttonStyle(.bordered)
                         .tint(DesignTokens.Colors.codexBlue)
                     }
                 }

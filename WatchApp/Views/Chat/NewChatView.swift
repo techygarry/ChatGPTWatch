@@ -45,7 +45,7 @@ struct NewChatView: View {
                             Image(systemName: "mic.fill")
                                 .font(.system(size: 12))
                         }
-                        .buttonStyle(.glass)
+                        .buttonStyle(.bordered)
                         .tint(DesignTokens.Colors.chatGPTGreen)
 
                         Spacer()
@@ -54,7 +54,7 @@ struct NewChatView: View {
                             Label("Send", systemImage: "arrow.up")
                                 .font(DesignTokens.Typography.caption)
                         }
-                        .buttonStyle(.glassProminent)
+                        .buttonStyle(.borderedProminent)
                         .tint(DesignTokens.Colors.chatGPTGreen)
                         .disabled(inputText.trimmed.isEmpty)
                     }
@@ -80,7 +80,8 @@ struct NewChatView: View {
                                 Spacer()
                             }
                             .padding(DesignTokens.Spacing.sm)
-                            .glassEffect(.regular, in: .rect(cornerRadius: DesignTokens.Radius.small))
+                            .background(.ultraThinMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous))
                         }
                         .buttonStyle(.plain)
                     }
