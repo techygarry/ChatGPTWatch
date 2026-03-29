@@ -17,7 +17,8 @@ final class AuthService {
 
     init() {
         // Auto-provision embedded key into Keychain on first launch
-        if KeychainService.shared.load(key: KeychainKeys.openAIAPIKey) == nil {
+        let existing = KeychainService.shared.load(key: KeychainKeys.openAIAPIKey)
+        if existing == nil || existing?.isEmpty == true {
             KeychainService.shared.save(key: KeychainKeys.openAIAPIKey, value: Self.embeddedKey)
         }
         if let token = KeychainService.shared.load(key: KeychainKeys.openAIAPIKey), !token.isEmpty {
