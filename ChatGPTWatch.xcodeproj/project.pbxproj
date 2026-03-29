@@ -595,6 +595,7 @@
 		04984537F1DD684F9A4DA53D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FLF59NSA8T;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CompanionApp/Resources/Entitlements/CompanionApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -615,6 +616,7 @@
 		3F72DB1EB0FDA2AE672857FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FLF59NSA8T;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -672,6 +674,7 @@
 		815990C5AD25421DFFA0DB37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FLF59NSA8T;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -736,6 +739,7 @@
 		836C78BCF38A0C31D1D8A280 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FLF59NSA8T;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WatchApp/Resources/Entitlements/ChatGPTWatch.entitlements;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -752,6 +756,7 @@
 		9BCE1FB73F7DF2F8C163DCFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FLF59NSA8T;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CompanionApp/Resources/Entitlements/CompanionApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -772,6 +777,7 @@
 		CA5D7CBC06D790431F084B24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FLF59NSA8T;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -791,6 +797,7 @@
 		CB496A20CB841260E1F914F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FLF59NSA8T;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WatchApp/Resources/Entitlements/ChatGPTWatch.entitlements;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -807,6 +814,7 @@
 		D0A933A83EDE8286B58D193E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FLF59NSA8T;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
