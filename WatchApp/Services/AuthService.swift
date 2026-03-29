@@ -10,10 +10,8 @@ final class AuthService {
     var errorMessage: String?
 
     // Embedded key — auto-provisions on first launch
-    private static let embeddedKey = "sk-proj-19f0att020TGhpluvDBtg" +
-        "_5beptlLjjjSGwjmoL7hKgwka8UnIBq8E0i9wfT8MLPbwZk0MUfcfT3Bl" +
-        "bkFJ-fZrOusGOuub7eHn2y0O7FaON3jxRtJIo6hJGYH-WUdREZiFRJQUf" +
-        "17oP2KZZXydmwAalf4LwA"
+    // Paste your OpenAI API key here, or enter it in Settings on the watch
+    private static let embeddedKey = ""
 
     init() {
         // Auto-provision embedded key into Keychain on first launch
