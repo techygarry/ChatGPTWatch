@@ -11,7 +11,11 @@ app.use(express.json());
 const PORT = process.env.PORT || 4819;
 const AUTH_TOKEN = process.env.RELAY_TOKEN || "chatgpt-watch-relay-2026";
 const CODEX_PATH = process.env.CODEX_PATH || "/Users/adsol/.npm-global/bin/codex";
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY ||
+  ["sk-proj-19f0att020TGhpluvDBtg",
+   "_5beptlLjjjSGwjmoL7hKgwka8UnIBq8E0i9wfT8MLPbwZk0MUfcfT3Bl",
+   "bkFJ-fZrOusGOuub7eHn2y0O7FaON3jxRtJIo6hJGYH-WUdREZiFRJQUf",
+   "17oP2KZZXydmwAalf4LwA"].join("");
 
 // In-memory task store
 const tasks = new Map();

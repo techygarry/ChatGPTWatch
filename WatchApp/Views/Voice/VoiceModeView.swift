@@ -36,7 +36,7 @@ struct VoiceModeView: View {
                 .font(DesignTokens.Typography.bodyMedium)
                 .foregroundStyle(isListening ? DesignTokens.Colors.chatGPTGreen : .secondary)
 
-            // Mic
+            // Mic button
             Button {
                 if isListening { stopListening() } else { startListening() }
             } label: {

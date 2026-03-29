@@ -7,6 +7,7 @@ import Observation
 final class AppState {
     let openAIService = OpenAIService()
     let codexService = CodexService()
+    let ttsService = TTSService()
 
     let authService = AuthService()
     private(set) var chatVM: ChatViewModel

@@ -21,16 +21,20 @@ struct ChatDetailView: View {
                     let msgs = (appState.chatVM.currentConversation?.messages ?? [])
                         .filter { $0.role != .system }
                     ForEach(msgs) { message in
-                        MessageBubble(message: message)
+                        MessageBubble(message: message) {
+                            appState.ttsService.speak(message.content)
+                        }
                     }
 
                     if localIsStreaming {
                         if !displayedStreamText.isEmpty {
                             HStack(alignment: .top, spacing: DesignTokens.Spacing.xs) {
-                                Image(systemName: "brain.head.profile.fill")
-                                    .font(.system(size: 12))
+                                Image("ChatGPTLogo")
+                                    .resizable()
+                                    .renderingMode(.template)
                                     .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 16, height: 16)
+                                    .padding(.top, 2)
 
                                 Text(displayedStreamText)
                                     .font(DesignTokens.Typography.body)
@@ -54,6 +58,25 @@ struct ChatDetailView: View {
                 .padding(.bottom, DesignTokens.Spacing.sm)
             }
 
+            // TTS stop bar
+            if appState.ttsService.isSpeaking {
+                Button {
+                    appState.ttsService.stop()
+                } label: {
+                    HStack(spacing: DesignTokens.Spacing.xs) {
+                        Image(systemName: "stop.fill")
+                            .font(.system(size: 8))
+                        Text("Stop speaking")
+                            .font(DesignTokens.Typography.micro)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, DesignTokens.Spacing.xs)
+                }
+                .buttonStyle(.glass)
+                .tint(DesignTokens.Colors.chatGPTGreen)
+                .padding(.horizontal, DesignTokens.Spacing.sm)
+            }
+
             // Input bar
             HStack(spacing: DesignTokens.Spacing.sm) {
                 if localIsStreaming {
@@ -68,9 +91,7 @@ struct ChatDetailView: View {
                     }
                     .buttonStyle(.plain)
                 } else {
-                    Button {
-                        showVoice = true
-                    } label: {
+                    Button { showVoice = true } label: {
                         Image(systemName: "mic.fill")
                             .font(.system(size: 12))
                             .foregroundStyle(DesignTokens.Colors.chatGPTGreen)

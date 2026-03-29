@@ -5,10 +5,12 @@ struct TypingIndicator: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: DesignTokens.Spacing.xs) {
-            Image(systemName: "brain.head.profile.fill")
-                .font(.system(size: 12))
+            Image("ChatGPTLogo")
+                .resizable()
+                .renderingMode(.template)
                 .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
-                .frame(width: 20, height: 20)
+                .frame(width: 16, height: 16)
+                .padding(.top, 2)
 
             HStack(spacing: 5) {
                 ForEach(0..<3, id: \.self) { index in

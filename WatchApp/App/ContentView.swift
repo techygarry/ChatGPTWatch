@@ -4,26 +4,25 @@ import SwiftData
 struct ContentView: View {
     @Environment(AppState.self) private var appState
     @Environment(\.modelContext) private var modelContext
-    @State private var isAuthenticated = false
+    @State private var currentPage = 0
 
     var body: some View {
-        Group {
-            if isAuthenticated {
-                NavigationStack {
-                    HomeView()
-                }
-            } else {
-                LoginView()
+        TabView(selection: $currentPage) {
+            // Page 1: Home
+            NavigationStack {
+                HomeView()
             }
+            .tag(0)
+
+            // Page 2: Settings (horizontal swipe)
+            NavigationStack {
+                SettingsView()
+            }
+            .tag(1)
         }
+        .tabViewStyle(.page)
         .onAppear {
             appState.initialize(modelContext: modelContext)
-            isAuthenticated = appState.authService.isAuthenticated
-        }
-        .onChange(of: appState.authService.isAuthenticated) { _, newValue in
-            withAnimation(DesignTokens.Animation.standard) {
-                isAuthenticated = newValue
-            }
         }
     }
 }
@@ -38,20 +37,22 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: DesignTokens.Spacing.lg) {
-                // Logo
-                VStack(spacing: DesignTokens.Spacing.xs) {
-                    Image(systemName: "brain.head.profile.fill")
-                        .font(.system(size: 32))
+                // ChatGPT Logo
+                VStack(spacing: DesignTokens.Spacing.sm) {
+                    Image("ChatGPTLogo")
+                        .resizable()
+                        .renderingMode(.template)
                         .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
+                        .frame(width: 40, height: 40)
                         .scaleEffect(appear ? 1.0 : 0.5)
                         .opacity(appear ? 1 : 0)
 
                     Text("ChatGPT")
                         .font(DesignTokens.Typography.largeTitle)
                 }
-                .padding(.top, DesignTokens.Spacing.sm)
+                .padding(.top, DesignTokens.Spacing.xs)
 
-                // Chat Card
+                // Chat
                 NavigationLink {
                     ConversationsListView()
                 } label: {
@@ -64,7 +65,7 @@ struct HomeView: View {
                 }
                 .buttonStyle(.plain)
 
-                // Codex Card
+                // Codex
                 NavigationLink {
                     CodexSessionsView()
                 } label: {
@@ -77,23 +78,15 @@ struct HomeView: View {
                 }
                 .buttonStyle(.plain)
 
-                // Settings
-                NavigationLink {
-                    SettingsView()
-                } label: {
-                    HStack(spacing: DesignTokens.Spacing.sm) {
-                        Image(systemName: "gearshape.fill")
-                            .font(.system(size: 14))
-                            .foregroundStyle(.secondary)
-                        Text("Settings")
-                            .font(DesignTokens.Typography.caption)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, DesignTokens.Spacing.sm)
-                    .glassEffect(.regular, in: .capsule)
+                // Swipe hint
+                HStack(spacing: DesignTokens.Spacing.xs) {
+                    Image(systemName: "arrow.left")
+                        .font(.system(size: 8))
+                    Text("Swipe for settings")
+                        .font(DesignTokens.Typography.micro)
                 }
-                .buttonStyle(.plain)
+                .foregroundStyle(.tertiary)
+                .padding(.top, DesignTokens.Spacing.xs)
             }
             .padding(.horizontal, DesignTokens.Spacing.xs)
         }
@@ -108,14 +101,12 @@ struct HomeView: View {
 
     private var chatSubtitle: String {
         let count = appState.chatVM.conversations.count
-        if count == 0 { return "Start a conversation" }
-        return "\(count) conversation\(count == 1 ? "" : "s")"
+        return count == 0 ? "Start a conversation" : "\(count) conversation\(count == 1 ? "" : "s")"
     }
 
     private var codexSubtitle: String {
         let count = appState.codexVM.sessions.count
-        if count == 0 { return "Run coding tasks" }
-        return "\(count) session\(count == 1 ? "" : "s")"
+        return count == 0 ? "Run coding tasks" : "\(count) session\(count == 1 ? "" : "s")"
     }
 }
 

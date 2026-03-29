@@ -23,6 +23,7 @@
 		49A49EFE386E7C5C20DFCADC /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E41F23F1BEF3B34553348 /* OpenAIService.swift */; };
 		4A8E7D66BFA5B4B63E967FA5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063E80AFF1EE76544D94965 /* LoginView.swift */; };
 		4B56CC9D51E5704644FF8FAF /* SwiftDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B188207D187FB62FB60913A7 /* SwiftDataModels.swift */; };
+		5E8A2F93C7D41B0E62FA9D84 /* TTSService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D7E42A1F9C58E6A0D23B71 /* TTSService.swift */; };
 		671878F5313CDFE4D1B5EA46 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3962353C5EAD999908D533D /* SettingsView.swift */; };
 		7AF398F316B99A912305993B /* ChatGPTWatchWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6332E80A79953DC7634327DF /* ChatGPTWatchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8090680CAFC2E0FD9652B709 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B6BBF2640B7CA803C3A60 /* CacheManager.swift */; };
@@ -116,6 +117,7 @@
 		AF867C1ACEA5EFC6B91F83BC /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		B063E80AFF1EE76544D94965 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B188207D187FB62FB60913A7 /* SwiftDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataModels.swift; sourceTree = "<group>"; };
+		B3D7E42A1F9C58E6A0D23B71 /* TTSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSService.swift; sourceTree = "<group>"; };
 		C3962353C5EAD999908D533D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C8845AE8E9783933EBEDB7B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAC790F846012C951676E178 /* CompanionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionContentView.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				CE4B6BBF2640B7CA803C3A60 /* CacheManager.swift */,
 				48056DB5E1B026D60F17C616 /* CodexService.swift */,
 				7A1E41F23F1BEF3B34553348 /* OpenAIService.swift */,
+				B3D7E42A1F9C58E6A0D23B71 /* TTSService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				3F58883F214C0951ADC636F6 /* SharedModels.swift in Sources */,
 				F126CF28FB0FB316FDC3E5FA /* StatusBadge.swift in Sources */,
 				4B56CC9D51E5704644FF8FAF /* SwiftDataModels.swift in Sources */,
+				5E8A2F93C7D41B0E62FA9D84 /* TTSService.swift in Sources */,
 				C3E24F60C8A960BB95A6FC2E /* TypingIndicator.swift in Sources */,
 				FD866E1A87F95D633C3470CC /* VoiceModeView.swift in Sources */,
 				8B405AC7C06223F3F50767C4 /* VoiceWaveform.swift in Sources */,

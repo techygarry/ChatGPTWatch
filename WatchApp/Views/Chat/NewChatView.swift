@@ -11,10 +11,12 @@ struct NewChatView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: DesignTokens.Spacing.md) {
-                // Hero
-                Image(systemName: "brain.head.profile.fill")
-                    .font(.system(size: 30))
+                // Logo
+                Image("ChatGPTLogo")
+                    .resizable()
+                    .renderingMode(.template)
                     .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
+                    .frame(width: 32, height: 32)
                     .padding(.top, DesignTokens.Spacing.sm)
 
                 // Model
@@ -39,9 +41,7 @@ struct NewChatView: View {
                         .lineLimit(1...4)
 
                     HStack {
-                        Button {
-                            showVoice = true
-                        } label: {
+                        Button { showVoice = true } label: {
                             Image(systemName: "mic.fill")
                                 .font(.system(size: 12))
                         }
@@ -101,9 +101,7 @@ struct NewChatView: View {
                 startChat()
             }
         }
-        .onAppear {
-            selectedModel = appState.settingsVM.selectedChatModel
-        }
+        .onAppear { selectedModel = appState.settingsVM.selectedChatModel }
     }
 
     private func startChat() {

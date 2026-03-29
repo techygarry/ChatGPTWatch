@@ -53,10 +53,13 @@ struct SettingsView: View {
                                 .foregroundStyle(DesignTokens.Colors.warningAmber)
                         }
 
-                        Button("Connect Account") { showAPIKey = true }
-                            .font(DesignTokens.Typography.caption)
-                            .buttonStyle(.glassProminent)
-                            .tint(DesignTokens.Colors.chatGPTGreen)
+                        Button("Connect Account") {
+                            apiKeyInput = ""
+                            showAPIKey = true
+                        }
+                        .font(DesignTokens.Typography.caption)
+                        .buttonStyle(.glassProminent)
+                        .tint(DesignTokens.Colors.chatGPTGreen)
                     }
                 }
                 .cardStyle()
@@ -114,12 +117,10 @@ struct SettingsView: View {
                 .tint(DesignTokens.Colors.errorRed)
 
                 // Version
-                VStack(spacing: DesignTokens.Spacing.xxs) {
-                    Text("ChatGPT Watch v1.0.0")
-                        .font(DesignTokens.Typography.micro)
-                        .foregroundStyle(.tertiary)
-                }
-                .padding(.top, DesignTokens.Spacing.sm)
+                Text("ChatGPT Watch v1.0.0")
+                    .font(DesignTokens.Typography.micro)
+                    .foregroundStyle(.tertiary)
+                    .padding(.top, DesignTokens.Spacing.sm)
             }
             .padding(.horizontal, DesignTokens.Spacing.xs)
         }
@@ -128,6 +129,7 @@ struct SettingsView: View {
             APIKeyInputView(apiKey: $apiKeyInput) {
                 appState.settingsVM.apiKey = apiKeyInput
                 appState.settingsVM.saveAPIKey()
+                appState.authService.loginWithAPIKey(apiKeyInput)
                 showAPIKey = false
             }
         }
@@ -136,9 +138,7 @@ struct SettingsView: View {
                 appState.settingsVM.clearAllData()
             }
         }
-        .onAppear {
-            appState.settingsVM.loadSettings()
-        }
+        .onAppear { appState.settingsVM.loadSettings() }
     }
 }
 
