@@ -143,9 +143,15 @@ struct NewCodexTaskView: View {
                 .disabled(taskInput.trimmed.isEmpty || appState.codexVM.isCreating)
 
                 if let error = appState.codexVM.errorMessage {
-                    Label(error, systemImage: "exclamationmark.circle.fill")
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(DesignTokens.Colors.errorRed)
+                    VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
+                        Label("Error", systemImage: "exclamationmark.circle.fill")
+                            .font(DesignTokens.Typography.caption)
+                            .foregroundStyle(DesignTokens.Colors.errorRed)
+                        Text(error)
+                            .font(DesignTokens.Typography.micro)
+                            .foregroundStyle(.secondary)
+                    }
+                    .cardStyle()
                 }
             }
             .padding(.horizontal, DesignTokens.Spacing.xs)
