@@ -1,0 +1,28 @@
+# Xcode
+DerivedData/
+*.xcuserdata/
+xcuserdata/
+*.xcworkspace/xcuserdata/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# CocoaPods / SPM
+Pods/
+.build/
+
+# Node
+node_modules/
+
+# Misc
+*.log
+error.log

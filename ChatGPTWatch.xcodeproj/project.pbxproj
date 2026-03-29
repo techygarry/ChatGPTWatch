@@ -1,0 +1,864 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0595082F6FFEB76F33EEC878 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36BAE920E9F42F452DD6B54 /* Extensions.swift */; };
+		104457510B62CC7EC5BC8732 /* CodexModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560CF7EDB7EE3A99E5ED8324 /* CodexModels.swift */; };
+		1550B6CCCF0AED97C41F04C4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A649AD2ADC6FA9E93FC706A5 /* SettingsViewModel.swift */; };
+		1C23FD316B18598D060D2E60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56145F8E3E2FEE79E5DE965 /* Assets.xcassets */; };
+		1F0ECF61267454D3443FF7B1 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E143FCC2836EB1BD1BED39C /* ChatViewModel.swift */; };
+		1FD9681271DA1D45B2FB73B4 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00E8864559A3A1763DB26F /* AuthService.swift */; };
+		2A6ACDB6696DFE35E9D43612 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF867C1ACEA5EFC6B91F83BC /* MessageBubble.swift */; };
+		2D0B0A2CDD2B68052E528DC5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8B35E58A7CF8CF9DA05A9 /* ContentView.swift */; };
+		322E0804A1E8F7B6595C1002 /* NewCodexTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE22C29423F38A393D1148D4 /* NewCodexTaskView.swift */; };
+		3356ACEB96BAF28FC9B14C70 /* CircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6776131EF18B1E7BA7371C /* CircularWidget.swift */; };
+		3C838D023CC66857D1B690B0 /* InlineWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349E11995B743F8476C2F32 /* InlineWidget.swift */; };
+		3D613A081891CEC67D4C2085 /* ChatGPTWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F1D338E0E10101B9C53F7 /* ChatGPTWatchApp.swift */; };
+		3F58883F214C0951ADC636F6 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C547371522431F6123C259 /* SharedModels.swift */; };
+		49A49EFE386E7C5C20DFCADC /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E41F23F1BEF3B34553348 /* OpenAIService.swift */; };
+		4A8E7D66BFA5B4B63E967FA5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063E80AFF1EE76544D94965 /* LoginView.swift */; };
+		4B56CC9D51E5704644FF8FAF /* SwiftDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B188207D187FB62FB60913A7 /* SwiftDataModels.swift */; };
+		671878F5313CDFE4D1B5EA46 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3962353C5EAD999908D533D /* SettingsView.swift */; };
+		7AF398F316B99A912305993B /* ChatGPTWatchWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6332E80A79953DC7634327DF /* ChatGPTWatchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8090680CAFC2E0FD9652B709 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B6BBF2640B7CA803C3A60 /* CacheManager.swift */; };
+		812026CCA9E80CF3EAFA539C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB74F1AB85C9FB029106A56D /* Constants.swift */; };
+		82001DC5BA9033E71AA75DA6 /* ChatGPTWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE794C737B47BB3273B82A0 /* ChatGPTWidgetBundle.swift */; };
+		8B405AC7C06223F3F50767C4 /* VoiceWaveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7490B43191A846D055E00709 /* VoiceWaveform.swift */; };
+		8E53E1D4F53A7A6BB682C6D3 /* CodexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48056DB5E1B026D60F17C616 /* CodexService.swift */; };
+		A28150AD6BD90FE002782181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8845AE8E9783933EBEDB7B6 /* Assets.xcassets */; };
+		AD3AFB09190A5E7FBF4D78B4 /* ChatGPTCompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAC4382B3D68175896043B /* ChatGPTCompanionApp.swift */; };
+		AFCFE0981D01E2E48E4EA0AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2399EDB04CDA53B66618214B /* Assets.xcassets */; };
+		B096556979F9493DE37F4783 /* RectangularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A332E96BA167246EDF8972 /* RectangularWidget.swift */; };
+		B18FE2E893AFCA035AD4CF57 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C547371522431F6123C259 /* SharedModels.swift */; };
+		B2A068D37688E3207DFBF901 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE9EA60C550E2E4007B068D /* NewChatView.swift */; };
+		B623330833FCBD72A0395359 /* CodexSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA7C0EC72AE873B5B58D2C /* CodexSessionsView.swift */; };
+		BF4662A7831DD19C6B364240 /* CodexTaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22F44824CAB9670C774F2E8 /* CodexTaskCard.swift */; };
+		C328F3A08F4063A15715F0D9 /* CodexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142577362C11E9A3BED3A205 /* CodexViewModel.swift */; };
+		C3E24F60C8A960BB95A6FC2E /* TypingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC932B35B2F85FC2FC7AD7 /* TypingIndicator.swift */; };
+		C5D8C44B49DD9C61456B9B67 /* CompanionConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43FC2DB173BA148B9423A5 /* CompanionConnectivityService.swift */; };
+		D528E5A31DFFC6F5F346D1EC /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5B89428B2DA4CCC292A54 /* KeychainService.swift */; };
+		D692E06626F3C0069B8257D1 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFC157E820A5C9DB117368 /* DesignTokens.swift */; };
+		DED97713013BDD362BD97A7B /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49654DB15BDA90CC0F1579D /* HapticManager.swift */; };
+		E154133689CF45D30DB4EA5D /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF597D9D983D754F4BC515D /* ChatDetailView.swift */; };
+		EE02B42DE60C4832CA5189EA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977A8AC66DB349482F164021 /* AppState.swift */; };
+		F126CF28FB0FB316FDC3E5FA /* StatusBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29D9912B9787FF17D04BC99 /* StatusBadge.swift */; };
+		F16FE88B67548DAF1BF3851B /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5B89428B2DA4CCC292A54 /* KeychainService.swift */; };
+		F2F833D4EDE02F35DE1699B5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5B89428B2DA4CCC292A54 /* KeychainService.swift */; };
+		F389C75BEF4B4959C4CD4A43 /* SharedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C547371522431F6123C259 /* SharedModels.swift */; };
+		F9FF4109587C07E6DFEA7C33 /* CompanionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC790F846012C951676E178 /* CompanionContentView.swift */; };
+		FA18F3FB0C0B441537E50B79 /* CodexSessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A1DA8C87928B4C9DFC1D9A /* CodexSessionDetailView.swift */; };
+		FCE1314ABFB1D1B598997A1A /* ConversationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A642A658489DBE1E9857E6 /* ConversationsListView.swift */; };
+		FD23F5A5D1E7DBFE27A238D5 /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4FC046666C6D20120B334A /* ChatModels.swift */; };
+		FD866E1A87F95D633C3470CC /* VoiceModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143F7AD689FA6CD6A205794B /* VoiceModeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A69D3BCF5CB6708B7C9663AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F00F619EDF7684F796F0390 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A6AC15C30DF3F80DD34330B;
+			remoteInfo = ChatGPTWatchWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E485361A1E2830CCBEEFBC7D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7AF398F316B99A912305993B /* ChatGPTWatchWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		05DA7C0EC72AE873B5B58D2C /* CodexSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexSessionsView.swift; sourceTree = "<group>"; };
+		0A4FC046666C6D20120B334A /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
+		0E143FCC2836EB1BD1BED39C /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		142577362C11E9A3BED3A205 /* CodexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexViewModel.swift; sourceTree = "<group>"; };
+		143F7AD689FA6CD6A205794B /* VoiceModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceModeView.swift; sourceTree = "<group>"; };
+		17A1DA8C87928B4C9DFC1D9A /* CodexSessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexSessionDetailView.swift; sourceTree = "<group>"; };
+		2399EDB04CDA53B66618214B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2B5492A906472ABC715CD909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3523A344B81ABAC6E4084914 /* ChatGPTWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChatGPTWatch.entitlements; sourceTree = "<group>"; };
+		35DE312F366776D3EC8D7CBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3AD8B35E58A7CF8CF9DA05A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		48056DB5E1B026D60F17C616 /* CodexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexService.swift; sourceTree = "<group>"; };
+		4D6878EDAC6239CC0457580E /* ChatGPTCompanion.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChatGPTCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		560CF7EDB7EE3A99E5ED8324 /* CodexModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexModels.swift; sourceTree = "<group>"; };
+		6332E80A79953DC7634327DF /* ChatGPTWatchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChatGPTWatchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C43FC2DB173BA148B9423A5 /* CompanionConnectivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionConnectivityService.swift; sourceTree = "<group>"; };
+		7490B43191A846D055E00709 /* VoiceWaveform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceWaveform.swift; sourceTree = "<group>"; };
+		74C547371522431F6123C259 /* SharedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModels.swift; sourceTree = "<group>"; };
+		7A1E41F23F1BEF3B34553348 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		7A7F1D338E0E10101B9C53F7 /* ChatGPTWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTWatchApp.swift; sourceTree = "<group>"; };
+		7DE794C737B47BB3273B82A0 /* ChatGPTWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTWidgetBundle.swift; sourceTree = "<group>"; };
+		8349E11995B743F8476C2F32 /* InlineWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineWidget.swift; sourceTree = "<group>"; };
+		977A8AC66DB349482F164021 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		989281CB7CA9BB160A315601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9E6776131EF18B1E7BA7371C /* CircularWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularWidget.swift; sourceTree = "<group>"; };
+		9EF597D9D983D754F4BC515D /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
+		A49654DB15BDA90CC0F1579D /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		A5D667B24611486B4DA146B7 /* ChatGPTWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatGPTWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5EFC157E820A5C9DB117368 /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
+		A649AD2ADC6FA9E93FC706A5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		AA00E8864559A3A1763DB26F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		AF867C1ACEA5EFC6B91F83BC /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
+		B063E80AFF1EE76544D94965 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B188207D187FB62FB60913A7 /* SwiftDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataModels.swift; sourceTree = "<group>"; };
+		C3962353C5EAD999908D533D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C8845AE8E9783933EBEDB7B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CAC790F846012C951676E178 /* CompanionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanionContentView.swift; sourceTree = "<group>"; };
+		CAE9EA60C550E2E4007B068D /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
+		CE4B6BBF2640B7CA803C3A60 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		CEC5B89428B2DA4CCC292A54 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		D29D9912B9787FF17D04BC99 /* StatusBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadge.swift; sourceTree = "<group>"; };
+		D3A642A658489DBE1E9857E6 /* ConversationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListView.swift; sourceTree = "<group>"; };
+		D5EC932B35B2F85FC2FC7AD7 /* TypingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingIndicator.swift; sourceTree = "<group>"; };
+		DB74F1AB85C9FB029106A56D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E0BAC4382B3D68175896043B /* ChatGPTCompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTCompanionApp.swift; sourceTree = "<group>"; };
+		E22F44824CAB9670C774F2E8 /* CodexTaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexTaskCard.swift; sourceTree = "<group>"; };
+		E36BAE920E9F42F452DD6B54 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E56145F8E3E2FEE79E5DE965 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E6A332E96BA167246EDF8972 /* RectangularWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularWidget.swift; sourceTree = "<group>"; };
+		EDDCDED283DF756AC8717CC2 /* CompanionApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CompanionApp.entitlements; sourceTree = "<group>"; };
+		EE22C29423F38A393D1148D4 /* NewCodexTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCodexTaskView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0D2669083DD5B2ADE30AD3EA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0E143FCC2836EB1BD1BED39C /* ChatViewModel.swift */,
+				142577362C11E9A3BED3A205 /* CodexViewModel.swift */,
+				A649AD2ADC6FA9E93FC706A5 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1108A3046A57DAD52F5CEE11 = {
+			isa = PBXGroup;
+			children = (
+				27586EC31115542E5039848B /* CompanionApp */,
+				766FD4B6B4A7F02C7AA9A6AF /* Shared */,
+				EC4C1A69721E145AAF950B85 /* WatchApp */,
+				7F21DD3D264FFCDF2DED5C8B /* Widgets */,
+				299D4A18DD0FB4FEA3C49B27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1695F870C18F460AB17BFFB9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C8845AE8E9783933EBEDB7B6 /* Assets.xcassets */,
+				47D9FC7951A8D5B115FC7E4A /* Entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		27586EC31115542E5039848B /* CompanionApp */ = {
+			isa = PBXGroup;
+			children = (
+				2B5492A906472ABC715CD909 /* Info.plist */,
+				ABE5B07781B3D2F369647E7D /* App */,
+				548239D647E1E0E8239B703F /* Resources */,
+				AEBB4A4955613465F72CDA6B /* Services */,
+				376A0312149EA89D93B33843 /* Views */,
+			);
+			path = CompanionApp;
+			sourceTree = "<group>";
+		};
+		299D4A18DD0FB4FEA3C49B27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D6878EDAC6239CC0457580E /* ChatGPTCompanion.app */,
+				A5D667B24611486B4DA146B7 /* ChatGPTWatch.app */,
+				6332E80A79953DC7634327DF /* ChatGPTWatchWidgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2F29A67D612642E62C00589A /* Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				EDDCDED283DF756AC8717CC2 /* CompanionApp.entitlements */,
+			);
+			path = Entitlements;
+			sourceTree = "<group>";
+		};
+		376A0312149EA89D93B33843 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAC790F846012C951676E178 /* CompanionContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		47D9FC7951A8D5B115FC7E4A /* Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				3523A344B81ABAC6E4084914 /* ChatGPTWatch.entitlements */,
+			);
+			path = Entitlements;
+			sourceTree = "<group>";
+		};
+		4C252ADE1A7B4B24030E8128 /* Voice */ = {
+			isa = PBXGroup;
+			children = (
+				143F7AD689FA6CD6A205794B /* VoiceModeView.swift */,
+			);
+			path = Voice;
+			sourceTree = "<group>";
+		};
+		4DB169713A658353B4B26ADE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AA00E8864559A3A1763DB26F /* AuthService.swift */,
+				CE4B6BBF2640B7CA803C3A60 /* CacheManager.swift */,
+				48056DB5E1B026D60F17C616 /* CodexService.swift */,
+				7A1E41F23F1BEF3B34553348 /* OpenAIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		548239D647E1E0E8239B703F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E56145F8E3E2FEE79E5DE965 /* Assets.xcassets */,
+				2F29A67D612642E62C00589A /* Entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		74E3748623A63110AF41C54D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DB74F1AB85C9FB029106A56D /* Constants.swift */,
+				A5EFC157E820A5C9DB117368 /* DesignTokens.swift */,
+				E36BAE920E9F42F452DD6B54 /* Extensions.swift */,
+				A49654DB15BDA90CC0F1579D /* HapticManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		766FD4B6B4A7F02C7AA9A6AF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CEC5B89428B2DA4CCC292A54 /* KeychainService.swift */,
+				74C547371522431F6123C259 /* SharedModels.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		7F21DD3D264FFCDF2DED5C8B /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				7DE794C737B47BB3273B82A0 /* ChatGPTWidgetBundle.swift */,
+				9E6776131EF18B1E7BA7371C /* CircularWidget.swift */,
+				989281CB7CA9BB160A315601 /* Info.plist */,
+				8349E11995B743F8476C2F32 /* InlineWidget.swift */,
+				E6A332E96BA167246EDF8972 /* RectangularWidget.swift */,
+				A4B9FC07DDB2A1E1B3C2CA5E /* Resources */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		7FF68FA762424CA090991628 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				9EF597D9D983D754F4BC515D /* ChatDetailView.swift */,
+				D3A642A658489DBE1E9857E6 /* ConversationsListView.swift */,
+				CAE9EA60C550E2E4007B068D /* NewChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		841C9685779F1FCC695948A3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE2FD4912885B9577B85AA79 /* Auth */,
+				7FF68FA762424CA090991628 /* Chat */,
+				A705472699A6C5F4E4D78470 /* Codex */,
+				961B6B3D85072164C11B9E6E /* Settings */,
+				4C252ADE1A7B4B24030E8128 /* Voice */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9302D83CD0DED1CDCCF81C69 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A4FC046666C6D20120B334A /* ChatModels.swift */,
+				560CF7EDB7EE3A99E5ED8324 /* CodexModels.swift */,
+				B188207D187FB62FB60913A7 /* SwiftDataModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		961B6B3D85072164C11B9E6E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C3962353C5EAD999908D533D /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9FE67CC4DAD5217169A92E0F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				977A8AC66DB349482F164021 /* AppState.swift */,
+				7A7F1D338E0E10101B9C53F7 /* ChatGPTWatchApp.swift */,
+				3AD8B35E58A7CF8CF9DA05A9 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A4B9FC07DDB2A1E1B3C2CA5E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2399EDB04CDA53B66618214B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A705472699A6C5F4E4D78470 /* Codex */ = {
+			isa = PBXGroup;
+			children = (
+				17A1DA8C87928B4C9DFC1D9A /* CodexSessionDetailView.swift */,
+				05DA7C0EC72AE873B5B58D2C /* CodexSessionsView.swift */,
+				EE22C29423F38A393D1148D4 /* NewCodexTaskView.swift */,
+			);
+			path = Codex;
+			sourceTree = "<group>";
+		};
+		ABE5B07781B3D2F369647E7D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E0BAC4382B3D68175896043B /* ChatGPTCompanionApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AEBB4A4955613465F72CDA6B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6C43FC2DB173BA148B9423A5 /* CompanionConnectivityService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C6D08E8C45EDE23D154441A6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E22F44824CAB9670C774F2E8 /* CodexTaskCard.swift */,
+				AF867C1ACEA5EFC6B91F83BC /* MessageBubble.swift */,
+				D29D9912B9787FF17D04BC99 /* StatusBadge.swift */,
+				D5EC932B35B2F85FC2FC7AD7 /* TypingIndicator.swift */,
+				7490B43191A846D055E00709 /* VoiceWaveform.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EC4C1A69721E145AAF950B85 /* WatchApp */ = {
+			isa = PBXGroup;
+			children = (
+				35DE312F366776D3EC8D7CBF /* Info.plist */,
+				9FE67CC4DAD5217169A92E0F /* App */,
+				C6D08E8C45EDE23D154441A6 /* Components */,
+				9302D83CD0DED1CDCCF81C69 /* Models */,
+				1695F870C18F460AB17BFFB9 /* Resources */,
+				4DB169713A658353B4B26ADE /* Services */,
+				74E3748623A63110AF41C54D /* Utilities */,
+				0D2669083DD5B2ADE30AD3EA /* ViewModels */,
+				841C9685779F1FCC695948A3 /* Views */,
+			);
+			path = WatchApp;
+			sourceTree = "<group>";
+		};
+		FE2FD4912885B9577B85AA79 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B063E80AFF1EE76544D94965 /* LoginView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A6AC15C30DF3F80DD34330B /* ChatGPTWatchWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBD22AFE8958A59193FBBB35 /* Build configuration list for PBXNativeTarget "ChatGPTWatchWidgets" */;
+			buildPhases = (
+				59254D62DD6F76B513F8642C /* Sources */,
+				BD05187B92E8E886058C22F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChatGPTWatchWidgets;
+			packageProductDependencies = (
+			);
+			productName = ChatGPTWatchWidgets;
+			productReference = 6332E80A79953DC7634327DF /* ChatGPTWatchWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		7B9BF51609A41F3269F9EF47 /* ChatGPTCompanion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74F0493838F5A32D52071C45 /* Build configuration list for PBXNativeTarget "ChatGPTCompanion" */;
+			buildPhases = (
+				F381ED4BF6D386B72724C531 /* Sources */,
+				740EF0940DBDFBEE879D1992 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChatGPTCompanion;
+			packageProductDependencies = (
+			);
+			productName = ChatGPTCompanion;
+			productReference = 4D6878EDAC6239CC0457580E /* ChatGPTCompanion.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7F79952FE733361719B6B394 /* ChatGPTWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 747548D66E7E2993A9DB5BC8 /* Build configuration list for PBXNativeTarget "ChatGPTWatch" */;
+			buildPhases = (
+				6D49A46583E68B23057DA0CA /* Sources */,
+				C674DFC2854A941DBF424A29 /* Resources */,
+				E485361A1E2830CCBEEFBC7D /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9042FD5EC40F9F9A19BD728A /* PBXTargetDependency */,
+			);
+			name = ChatGPTWatch;
+			packageProductDependencies = (
+			);
+			productName = ChatGPTWatch;
+			productReference = A5D667B24611486B4DA146B7 /* ChatGPTWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9F00F619EDF7684F796F0390 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = E62626BAC8B2393BD266298F /* Build configuration list for PBXProject "ChatGPTWatch" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 1108A3046A57DAD52F5CEE11;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 299D4A18DD0FB4FEA3C49B27 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7B9BF51609A41F3269F9EF47 /* ChatGPTCompanion */,
+				7F79952FE733361719B6B394 /* ChatGPTWatch */,
+				1A6AC15C30DF3F80DD34330B /* ChatGPTWatchWidgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		740EF0940DBDFBEE879D1992 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C23FD316B18598D060D2E60 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD05187B92E8E886058C22F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFCFE0981D01E2E48E4EA0AB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C674DFC2854A941DBF424A29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A28150AD6BD90FE002782181 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		59254D62DD6F76B513F8642C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82001DC5BA9033E71AA75DA6 /* ChatGPTWidgetBundle.swift in Sources */,
+				3356ACEB96BAF28FC9B14C70 /* CircularWidget.swift in Sources */,
+				3C838D023CC66857D1B690B0 /* InlineWidget.swift in Sources */,
+				F16FE88B67548DAF1BF3851B /* KeychainService.swift in Sources */,
+				B096556979F9493DE37F4783 /* RectangularWidget.swift in Sources */,
+				F389C75BEF4B4959C4CD4A43 /* SharedModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D49A46583E68B23057DA0CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE02B42DE60C4832CA5189EA /* AppState.swift in Sources */,
+				1FD9681271DA1D45B2FB73B4 /* AuthService.swift in Sources */,
+				8090680CAFC2E0FD9652B709 /* CacheManager.swift in Sources */,
+				E154133689CF45D30DB4EA5D /* ChatDetailView.swift in Sources */,
+				3D613A081891CEC67D4C2085 /* ChatGPTWatchApp.swift in Sources */,
+				FD23F5A5D1E7DBFE27A238D5 /* ChatModels.swift in Sources */,
+				1F0ECF61267454D3443FF7B1 /* ChatViewModel.swift in Sources */,
+				104457510B62CC7EC5BC8732 /* CodexModels.swift in Sources */,
+				8E53E1D4F53A7A6BB682C6D3 /* CodexService.swift in Sources */,
+				FA18F3FB0C0B441537E50B79 /* CodexSessionDetailView.swift in Sources */,
+				B623330833FCBD72A0395359 /* CodexSessionsView.swift in Sources */,
+				BF4662A7831DD19C6B364240 /* CodexTaskCard.swift in Sources */,
+				C328F3A08F4063A15715F0D9 /* CodexViewModel.swift in Sources */,
+				812026CCA9E80CF3EAFA539C /* Constants.swift in Sources */,
+				2D0B0A2CDD2B68052E528DC5 /* ContentView.swift in Sources */,
+				FCE1314ABFB1D1B598997A1A /* ConversationsListView.swift in Sources */,
+				D692E06626F3C0069B8257D1 /* DesignTokens.swift in Sources */,
+				0595082F6FFEB76F33EEC878 /* Extensions.swift in Sources */,
+				DED97713013BDD362BD97A7B /* HapticManager.swift in Sources */,
+				D528E5A31DFFC6F5F346D1EC /* KeychainService.swift in Sources */,
+				4A8E7D66BFA5B4B63E967FA5 /* LoginView.swift in Sources */,
+				2A6ACDB6696DFE35E9D43612 /* MessageBubble.swift in Sources */,
+				B2A068D37688E3207DFBF901 /* NewChatView.swift in Sources */,
+				322E0804A1E8F7B6595C1002 /* NewCodexTaskView.swift in Sources */,
+				49A49EFE386E7C5C20DFCADC /* OpenAIService.swift in Sources */,
+				671878F5313CDFE4D1B5EA46 /* SettingsView.swift in Sources */,
+				1550B6CCCF0AED97C41F04C4 /* SettingsViewModel.swift in Sources */,
+				3F58883F214C0951ADC636F6 /* SharedModels.swift in Sources */,
+				F126CF28FB0FB316FDC3E5FA /* StatusBadge.swift in Sources */,
+				4B56CC9D51E5704644FF8FAF /* SwiftDataModels.swift in Sources */,
+				C3E24F60C8A960BB95A6FC2E /* TypingIndicator.swift in Sources */,
+				FD866E1A87F95D633C3470CC /* VoiceModeView.swift in Sources */,
+				8B405AC7C06223F3F50767C4 /* VoiceWaveform.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F381ED4BF6D386B72724C531 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD3AFB09190A5E7FBF4D78B4 /* ChatGPTCompanionApp.swift in Sources */,
+				C5D8C44B49DD9C61456B9B67 /* CompanionConnectivityService.swift in Sources */,
+				F9FF4109587C07E6DFEA7C33 /* CompanionContentView.swift in Sources */,
+				F2F833D4EDE02F35DE1699B5 /* KeychainService.swift in Sources */,
+				B18FE2E893AFCA035AD4CF57 /* SharedModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9042FD5EC40F9F9A19BD728A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A6AC15C30DF3F80DD34330B /* ChatGPTWatchWidgets */;
+			targetProxy = A69D3BCF5CB6708B7C9663AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04984537F1DD684F9A4DA53D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CompanionApp/Resources/Entitlements/CompanionApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CompanionApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adsol.chatgptwatch;
+				PRODUCT_NAME = "ChatGPT Watch";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3F72DB1EB0FDA2AE672857FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		815990C5AD25421DFFA0DB37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		836C78BCF38A0C31D1D8A280 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WatchApp/Resources/Entitlements/ChatGPTWatch.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adsol.chatgptwatch.watchkitapp;
+				PRODUCT_NAME = "ChatGPT Watch";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		9BCE1FB73F7DF2F8C163DCFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CompanionApp/Resources/Entitlements/CompanionApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CompanionApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adsol.chatgptwatch;
+				PRODUCT_NAME = "ChatGPT Watch";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA5D7CBC06D790431F084B24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adsol.chatgptwatch.watchkitapp.widgets;
+				PRODUCT_NAME = "ChatGPT Widgets";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		CB496A20CB841260E1F914F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WatchApp/Resources/Entitlements/ChatGPTWatch.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WatchApp/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adsol.chatgptwatch.watchkitapp;
+				PRODUCT_NAME = "ChatGPT Watch";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		D0A933A83EDE8286B58D193E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adsol.chatgptwatch.watchkitapp.widgets;
+				PRODUCT_NAME = "ChatGPT Widgets";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		747548D66E7E2993A9DB5BC8 /* Build configuration list for PBXNativeTarget "ChatGPTWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB496A20CB841260E1F914F1 /* Debug */,
+				836C78BCF38A0C31D1D8A280 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		74F0493838F5A32D52071C45 /* Build configuration list for PBXNativeTarget "ChatGPTCompanion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BCE1FB73F7DF2F8C163DCFA /* Debug */,
+				04984537F1DD684F9A4DA53D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E62626BAC8B2393BD266298F /* Build configuration list for PBXProject "ChatGPTWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				815990C5AD25421DFFA0DB37 /* Debug */,
+				3F72DB1EB0FDA2AE672857FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FBD22AFE8958A59193FBBB35 /* Build configuration list for PBXNativeTarget "ChatGPTWatchWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0A933A83EDE8286B58D193E /* Debug */,
+				CA5D7CBC06D790431F084B24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9F00F619EDF7684F796F0390 /* Project object */;
+}

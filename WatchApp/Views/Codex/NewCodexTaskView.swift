@@ -1,0 +1,238 @@
+import SwiftUI
+
+struct NewCodexTaskView: View {
+    @Environment(AppState.self) private var appState
+    @Environment(\.dismiss) private var dismiss
+    @State private var taskInput = ""
+    @State private var instructions = ""
+    @State private var selectedProject: ProjectDir = .techyProjects
+    @State private var showInstructions = false
+    @State private var navigateToDetail = false
+    @State private var appear = false
+    @FocusState private var isInputFocused: Bool
+
+    enum ProjectDir: String, CaseIterable, Identifiable {
+        case techyProjects = "/Users/adsol/Documents/techy-projects"
+        case chatgptWatch = "/Users/adsol/Documents/techy-projects/ChatGPTWatch"
+        case bizos = "/Users/adsol/Documents/techy-projects/bizos"
+        case vakhramart = "/Users/adsol/Documents/techy-projects/vakhramart"
+        case wheelboss = "/Users/adsol/Documents/techy-projects/wheelboss"
+        case openlead = "/Users/adsol/Documents/techy-projects/openlead"
+        case diemart = "/Users/adsol/Documents/techy-projects/diemart-website"
+        case renewable = "/Users/adsol/Documents/techy-projects/renewable-masters-crm"
+
+        var id: String { rawValue }
+        var displayName: String {
+            switch self {
+            case .techyProjects: "All Projects"
+            case .chatgptWatch: "ChatGPT Watch"
+            case .bizos: "BizOS"
+            case .vakhramart: "Vakhramart"
+            case .wheelboss: "Wheelboss"
+            case .openlead: "OpenLead"
+            case .diemart: "Die Mart"
+            case .renewable: "Renewable Masters"
+            }
+        }
+    }
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: DesignTokens.Spacing.md) {
+                // Hero Header
+                VStack(spacing: DesignTokens.Spacing.sm) {
+                    ZStack {
+                        Circle()
+                            .fill(DesignTokens.Colors.codexPurple.opacity(0.12))
+                            .frame(width: 48, height: 48)
+                            .blur(radius: 5)
+
+                        Circle()
+                            .fill(DesignTokens.Colors.surfaceMid)
+                            .frame(width: 40, height: 40)
+                            .overlay(
+                                Circle()
+                                    .strokeBorder(DesignTokens.Gradients.purpleAccent, lineWidth: 1.5)
+                            )
+
+                        Image(systemName: "chevron.left.forwardslash.chevron.right")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundStyle(DesignTokens.Gradients.purpleAccent)
+                    }
+                    .scaleEffect(appear ? 1.0 : 0.7)
+                    .opacity(appear ? 1.0 : 0)
+
+                    Text("New Codex Task")
+                        .font(DesignTokens.Typography.sectionHeader)
+                        .foregroundStyle(.white)
+                }
+
+                // Project
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
+                    Label("Project", systemImage: "folder.fill")
+                        .font(DesignTokens.Typography.micro)
+                        .foregroundStyle(DesignTokens.Colors.codexPurple)
+                    Picker("Project", selection: $selectedProject) {
+                        ForEach(ProjectDir.allCases) { proj in
+                            Text(proj.displayName).tag(proj)
+                        }
+                    }
+                    .pickerStyle(.navigationLink)
+                }
+                .glassCard()
+
+                // Task Input
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
+                    Text("What should Codex do?")
+                        .font(DesignTokens.Typography.micro)
+                        .foregroundStyle(DesignTokens.Colors.textSecondary)
+                    TextField("e.g., Fix the login bug...", text: $taskInput, axis: .vertical)
+                        .font(DesignTokens.Typography.body)
+                        .focused($isInputFocused)
+                        .lineLimit(2...6)
+                }
+                .glassCard()
+
+                // Custom Instructions toggle
+                Button {
+                    withAnimation(DesignTokens.Animation.spring) {
+                        showInstructions.toggle()
+                    }
+                } label: {
+                    HStack {
+                        Image(systemName: "gearshape.fill")
+                            .font(.system(size: 9))
+                        Text("Custom Instructions")
+                            .font(DesignTokens.Typography.caption)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 8))
+                            .rotationEffect(.degrees(showInstructions ? 90 : 0))
+                    }
+                    .foregroundStyle(DesignTokens.Colors.textSecondary)
+                }
+                .buttonStyle(.plain)
+
+                if showInstructions {
+                    TextField("System instructions...", text: $instructions, axis: .vertical)
+                        .font(DesignTokens.Typography.body)
+                        .lineLimit(2...4)
+                        .glassCard()
+                        .transition(.asymmetric(
+                            insertion: .opacity.combined(with: .move(edge: .top)).combined(with: .scale(scale: 0.96)),
+                            removal: .opacity
+                        ))
+                }
+
+                // Templates
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.sm) {
+                    Text("Templates")
+                        .font(DesignTokens.Typography.micro)
+                        .foregroundStyle(DesignTokens.Colors.textSecondary)
+
+                    ForEach(taskTemplates, id: \.title) { template in
+                        Button {
+                            taskInput = template.prompt
+                        } label: {
+                            HStack(spacing: DesignTokens.Spacing.sm) {
+                                Image(systemName: template.icon)
+                                    .font(.system(size: 10))
+                                    .foregroundStyle(DesignTokens.Colors.codexPurple.opacity(0.7))
+                                    .frame(width: 16)
+                                Text(template.title)
+                                    .font(DesignTokens.Typography.caption)
+                                    .foregroundStyle(.white)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.system(size: 8))
+                                    .foregroundStyle(DesignTokens.Colors.textTertiary)
+                            }
+                            .padding(DesignTokens.Spacing.sm)
+                            .background(DesignTokens.Colors.surfaceMid)
+                            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous)
+                                    .strokeBorder(DesignTokens.Colors.glassStroke, lineWidth: 0.5)
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+
+                // Submit
+                Button {
+                    submitTask()
+                } label: {
+                    HStack(spacing: DesignTokens.Spacing.sm) {
+                        if appState.codexVM.isCreating {
+                            ProgressView()
+                                .tint(.white)
+                                .scaleEffect(0.8)
+                        } else {
+                            Image(systemName: "play.fill")
+                                .font(.system(size: 11))
+                        }
+                        Text(appState.codexVM.isCreating ? "Creating..." : "Run Task")
+                            .font(DesignTokens.Typography.bodyMedium)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, DesignTokens.Spacing.xs)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(DesignTokens.Colors.codexPurple)
+                .disabled(taskInput.trimmed.isEmpty || appState.codexVM.isCreating)
+                .accentGlow(color: DesignTokens.Colors.codexPurple)
+
+                if let error = appState.codexVM.errorMessage {
+                    HStack(spacing: DesignTokens.Spacing.xs) {
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .font(.caption2)
+                        Text(error)
+                            .font(DesignTokens.Typography.caption)
+                    }
+                    .foregroundStyle(DesignTokens.Colors.errorRed)
+                }
+            }
+            .padding(.horizontal, DesignTokens.Spacing.xs)
+        }
+        .navigationTitle("New Task")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(isPresented: $navigateToDetail) {
+            if let session = appState.codexVM.currentSession {
+                CodexSessionDetailView(sessionId: session.id)
+            }
+        }
+        .onAppear {
+            withAnimation(DesignTokens.Animation.bouncy.delay(0.1)) {
+                appear = true
+            }
+        }
+    }
+
+    private func submitTask() {
+        let input = taskInput.trimmed
+        let instr = instructions.trimmed.isEmpty
+            ? "You are an expert software engineer. Write clean, efficient code."
+            : instructions.trimmed
+        appState.codexVM.createTask(input: input, instructions: instr, workingDir: selectedProject.rawValue)
+
+        Task {
+            try? await Task.sleep(for: .seconds(1))
+            await MainActor.run {
+                if appState.codexVM.currentSession != nil {
+                    navigateToDetail = true
+                }
+            }
+        }
+    }
+
+    private var taskTemplates: [(title: String, icon: String, prompt: String)] {
+        [
+            ("Fix a bug", "ladybug.fill", "Fix the bug in "),
+            ("Add a feature", "plus.rectangle.fill", "Add a new feature that "),
+            ("Write tests", "checkmark.shield.fill", "Write unit tests for "),
+            ("Refactor code", "arrow.triangle.2.circlepath", "Refactor the code in "),
+            ("Code review", "eye.fill", "Review and improve ")
+        ]
+    }
+}
