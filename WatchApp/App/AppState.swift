@@ -8,6 +8,7 @@ final class AppState {
     let openAIService = OpenAIService()
     let codexService = CodexService()
     let ttsService = TTSService()
+    let whisperService = WhisperService()
 
     let authService = AuthService()
     private(set) var chatVM: ChatViewModel
