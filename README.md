@@ -1,170 +1,144 @@
 <p align="center">
-  <img src="mockups/hero_banner.png" alt="ChatGPT Watch" width="600">
+  <img src="mockups/real_watch_chat.jpg" alt="ChatGPT Watch running on Apple Watch Ultra" width="500">
 </p>
 
 <h1 align="center">ChatGPT Watch</h1>
+
 <p align="center">
-  <strong>ChatGPT on your wrist.</strong><br>
-  A full-featured ChatGPT client for Apple Watch, built with SwiftUI and Apple's Liquid Glass design.
+  <strong>ChatGPT on your wrist. For real.</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/watchOS-26-green?style=flat-square&logo=apple" alt="watchOS 26">
-  <img src="https://img.shields.io/badge/Swift-6.2-orange?style=flat-square&logo=swift" alt="Swift 6.2">
-  <img src="https://img.shields.io/badge/Xcode-26-blue?style=flat-square&logo=xcode" alt="Xcode 26">
-  <img src="https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square" alt="MIT License">
+  A native watchOS client for ChatGPT with streaming chat, live voice conversations,<br>
+  Codex coding tasks, and OpenAI text-to-speech — all from your Apple Watch.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/watchOS-26-10A37F?style=flat-square&logo=apple&logoColor=white" alt="watchOS 26">
+  <img src="https://img.shields.io/badge/Swift-6.2-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift 6.2">
+  <img src="https://img.shields.io/badge/OpenAI-GPT--5.x-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI">
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square" alt="MIT">
 </p>
 
 ---
 
-## What is this?
-
-ChatGPT Watch brings the full power of OpenAI's GPT models to your Apple Watch. Chat with GPT-5.x, run Codex coding tasks from your wrist, listen to AI responses with voice output, and manage everything without pulling out your phone.
-
-Built natively for watchOS 26 with Apple's new Liquid Glass design language.
-
-<p align="center">
-  <img src="mockups/ultra_home.png" alt="Home Screen on Apple Watch Ultra" width="350">
-</p>
-
 ## Features
 
-**Chat**
-- Streaming responses from GPT-5.x models (GPT-5.4, 5.3, 5.2, 5.1, 5, 4o, 4o-mini, o3, o4-mini)
-- Full conversation history with SwiftData persistence
-- Voice input via watchOS dictation
-- Voice output (TTS) - tap the speaker icon on any response to hear it read aloud using OpenAI's text-to-speech API
-- Quick prompt suggestions for instant conversations
+### Chat
+- **Streaming responses** from GPT-5.4, GPT-5.3, GPT-4o, o3, o4-mini, and 14 more models
+- Full conversation history persisted with SwiftData
+- Quick prompt suggestions
+- Message timestamps, model indicators
 
-**Codex**
-- Run coding tasks on your Mac remotely from your watch
-- Choose from 8 project directories
-- Track task status (queued, running, completed, failed)
-- View code output and file changes
-- Powered by a lightweight Node.js relay server + Cloudflare Tunnel
+### Live Voice Mode
+- **Tap mic → speak → hear the answer** — no typing needed
+- Records audio on-device via AVAudioRecorder
+- Transcribes with OpenAI Whisper API
+- Sends to ChatGPT, speaks response with OpenAI TTS
+- Full conversation loop: Record → Transcribe → Think → Speak → Repeat
+- Animated waveform and phase indicators
 
-**Design**
-- Apple Liquid Glass UI (watchOS 26)
-- ChatGPT logo throughout (the real OpenAI flower icon)
-- Dark theme with green (Chat) and purple (Codex) accent colors
+### Voice Output (TTS)
+- Every assistant message has a **speaker button** — tap to hear it read aloud
+- Uses OpenAI TTS API (`tts-1` model, `alloy` voice)
+- Falls back to system `AVSpeechSynthesizer` if API is unavailable
+- **Auto-speak** — responses are read aloud automatically when streaming finishes
+- "Stop speaking" bar to cancel playback
+
+### Codex
+- Run coding tasks on your Mac remotely from your wrist
+- 8 project directories pre-configured
+- Real-time task status tracking (queued → running → completed/failed)
+- View code output, file changes, and diffs
+- Relay health indicator with setup instructions
+- Powered by Node.js relay server + Cloudflare Tunnel
+
+### Design
+- Built for **watchOS 26** with Apple's design language
+- Original ChatGPT logo throughout
+- Dark theme with green (Chat) and purple (Codex) accents
+- Horizontal swipe: Home ← → Settings
 - Smooth animations and haptic feedback
-- Horizontal swipe between Home and Settings
 
-**More**
-- iPhone companion app for easy API key setup
-- watchOS widgets (circular, rectangular, inline)
-- Keychain-secured API key storage
-- Offline-capable with cached conversations
+---
 
 ## Architecture
 
 ```
 ChatGPTWatch/
-  WatchApp/
-    App/           - ContentView (Home + Settings pages), AppState
-    Views/         - Chat, Codex, Settings, Voice, Auth screens
-    Components/    - MessageBubble, TypingIndicator, StatusBadge, CodexTaskCard
-    ViewModels/    - ChatViewModel, CodexViewModel, SettingsViewModel
-    Services/      - OpenAIService, CodexService, TTSService, AuthService
-    Models/        - ChatModels, CodexModels, SwiftDataModels
-    Utilities/     - DesignTokens, Extensions, Constants, HapticManager
-  CompanionApp/    - iPhone companion for API key transfer
-  Widgets/         - Circular, Rectangular, Inline watch widgets
-  codex-relay/     - Node.js relay server for Codex CLI
-  Shared/          - KeychainService, SharedModels
+├── WatchApp/
+│   ├── App/           ContentView (Home + Settings), AppState
+│   ├── Views/         Chat, Codex, Settings, Voice screens
+│   ├── Components/    MessageBubble, TypingIndicator, StatusBadge
+│   ├── ViewModels/    ChatViewModel, CodexViewModel, SettingsViewModel
+│   ├── Services/      OpenAIService, WhisperService, TTSService, CodexService
+│   ├── Models/        ChatModels, CodexModels, SwiftDataModels
+│   └── Utilities/     DesignTokens, Extensions, Constants
+├── CompanionApp/      iPhone companion for API key setup
+├── Widgets/           Circular, Rectangular, Inline watch widgets
+├── codex-relay/       Node.js relay server for Codex CLI
+└── Shared/            KeychainService, SharedModels
 ```
 
 ## Getting Started
 
 ### Prerequisites
-
 - Xcode 26+
-- watchOS 26+ (Apple Watch Series 6 or later)
-- OpenAI API key (Plus or Pro subscription)
-- Node.js 18+ (for Codex relay, optional)
+- Apple Watch with watchOS 26+ (Series 6 or later)
+- OpenAI API key ([get one here](https://platform.openai.com/api-keys))
 
-### Setup
+### Quick Start
 
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/techygarry/ChatGPTWatch.git
-   cd ChatGPTWatch
-   ```
+```bash
+git clone https://github.com/techygarry/ChatGPTWatch.git
+cd ChatGPTWatch
+open ChatGPTWatch.xcodeproj
+```
 
-2. **Add your API key**
+Add your API key in `WatchApp/Services/AuthService.swift`:
+```swift
+private static let embeddedKey = "sk-proj-your-key-here"
+```
 
-   Open `WatchApp/Services/AuthService.swift` and set your key:
-   ```swift
-   private static let embeddedKey = "sk-proj-your-key-here"
-   ```
-   Or enter it in Settings on the watch after installing.
-
-3. **Build and run**
-   ```bash
-   open ChatGPTWatch.xcodeproj
-   ```
-   Select the `ChatGPTWatch` scheme, pick your watch or simulator, and run.
+Select your Apple Watch, hit **Run**.
 
 ### Codex Relay (Optional)
 
-To run coding tasks from your watch:
+```bash
+cd codex-relay && npm install && node server.js
+cloudflared tunnel --url http://localhost:4819
+```
 
-1. **Start the relay server**
-   ```bash
-   cd codex-relay
-   npm install
-   node server.js
-   ```
-
-2. **Expose with Cloudflare Tunnel**
-   ```bash
-   cloudflared tunnel --url http://localhost:4819
-   ```
-
-3. **Update the relay URL** in `WatchApp/Services/CodexService.swift`
+Update the tunnel URL in `WatchApp/Services/CodexService.swift`.
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| UI | SwiftUI, Liquid Glass, watchOS 26 |
-| State | `@Observable`, SwiftData |
-| Network | URLSession, SSE streaming |
-| Storage | Keychain, SwiftData, UserDefaults |
-| TTS | OpenAI TTS API (`tts-1`, `alloy` voice) |
-| Codex | Node.js relay + Codex CLI |
-| Tunnel | Cloudflare Quick Tunnels |
+| | |
+|---|---|
+| **UI** | SwiftUI, watchOS 26 |
+| **State** | `@Observable`, SwiftData |
+| **Chat** | OpenAI Chat Completions API, SSE streaming |
+| **Voice In** | AVAudioRecorder + OpenAI Whisper API |
+| **Voice Out** | OpenAI TTS API + AVSpeechSynthesizer fallback |
+| **Storage** | Keychain, SwiftData, UserDefaults |
+| **Codex** | Node.js relay + Codex CLI + Cloudflare Tunnel |
 
-## Models Supported
+## Models
 
-### Chat
-GPT-5.4, GPT-5.3, GPT-5.2, GPT-5.1, GPT-5, GPT-4o, GPT-4o Mini, o3, o3 Mini, o4-mini, GPT-4.1, GPT-4.1 Mini, GPT-4.1 Nano, GPT-4.5
+**Chat:** GPT-5.4, GPT-5.3, GPT-5.2, GPT-5.1, GPT-5, GPT-4o, GPT-4o Mini, o3, o3 Mini, o4-mini, GPT-4.1, GPT-4.1 Mini, GPT-4.1 Nano, GPT-4.5
 
-### Codex
-GPT-5.3 Codex, GPT-5.2 Codex, GPT-5.1 Codex, GPT-5.1 Codex Max, GPT-5.1 Codex Mini, GPT-5 Codex
+**Codex:** GPT-5.3 Codex, GPT-5.2 Codex, GPT-5.1 Codex, GPT-5.1 Codex Max, GPT-5.1 Codex Mini, GPT-5 Codex
 
 ## Contributing
 
-Pull requests welcome. For major changes, open an issue first.
-
-1. Fork the repo
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+PRs welcome. For major changes, open an issue first.
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
-
-## Acknowledgments
-
-- Built with [Claude Code](https://claude.ai/claude-code) by Anthropic
-- Uses the [OpenAI API](https://platform.openai.com)
-- Designed for Apple Watch Ultra
+[MIT](LICENSE)
 
 ---
 
 <p align="center">
-  <sub>Made with care by <a href="https://github.com/techygarry">@techygarry</a></sub>
+  <sub>Built by <a href="https://github.com/techygarry">@techygarry</a> with <a href="https://claude.ai/claude-code">Claude Code</a></sub>
 </p>
