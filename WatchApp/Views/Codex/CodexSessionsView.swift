@@ -6,75 +6,59 @@ struct CodexSessionsView: View {
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {
-        List {
-            // New Task
-            NavigationLink {
-                NewCodexTaskView()
-            } label: {
-                HStack(spacing: DesignTokens.Spacing.sm) {
-                    ZStack {
-                        Circle()
-                            .fill(DesignTokens.Colors.codexPurple.opacity(0.15))
-                            .frame(width: 28, height: 28)
+        ScrollView {
+            VStack(spacing: DesignTokens.Spacing.sm) {
+                // New Task
+                NavigationLink {
+                    NewCodexTaskView()
+                } label: {
+                    HStack(spacing: DesignTokens.Spacing.sm) {
                         Image(systemName: "plus")
-                            .font(.system(size: 12, weight: .bold))
+                            .font(.system(size: 13, weight: .bold))
                             .foregroundStyle(DesignTokens.Colors.codexPurple)
+                        Text("New Task")
+                            .font(DesignTokens.Typography.bodyMedium)
+                            .foregroundStyle(DesignTokens.Colors.codexPurple)
+                        Spacer()
                     }
-                    Text("New Task")
-                        .font(DesignTokens.Typography.bodyMedium)
-                        .foregroundStyle(DesignTokens.Colors.codexPurple)
+                    .padding(DesignTokens.Spacing.md)
+                    .glassEffect(.regular.tint(DesignTokens.Colors.codexPurple), in: .rect(cornerRadius: DesignTokens.Radius.medium))
                 }
-            }
-            .listRowBackground(
-                DesignTokens.Colors.surfaceMid
-                    .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous))
-            )
+                .buttonStyle(.plain)
 
-            if appState.codexVM.sessions.isEmpty && !appState.codexVM.isLoading {
-                VStack(spacing: DesignTokens.Spacing.md) {
-                    ZStack {
-                        Circle()
-                            .fill(DesignTokens.Colors.codexPurple.opacity(0.08))
-                            .frame(width: 56, height: 56)
+                if appState.codexVM.sessions.isEmpty && !appState.codexVM.isLoading {
+                    VStack(spacing: DesignTokens.Spacing.md) {
                         Image(systemName: "chevron.left.forwardslash.chevron.right")
-                            .font(.system(size: 24))
+                            .font(.system(size: 28))
                             .foregroundStyle(DesignTokens.Colors.codexPurple.opacity(0.5))
+                        Text("No Codex sessions")
+                            .font(DesignTokens.Typography.caption)
+                            .foregroundStyle(.secondary)
+                        Text("Create a task to start coding")
+                            .font(DesignTokens.Typography.timestamp)
+                            .foregroundStyle(.tertiary)
                     }
-                    Text("No Codex sessions")
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(DesignTokens.Colors.textSecondary)
-                    Text("Create a task to start coding")
-                        .font(DesignTokens.Typography.timestamp)
-                        .foregroundStyle(DesignTokens.Colors.textTertiary)
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, DesignTokens.Spacing.xl)
-                .listRowBackground(Color.clear)
-            } else {
-                ForEach(appState.codexVM.sessions) { session in
-                    NavigationLink {
-                        CodexSessionDetailView(sessionId: session.id)
-                    } label: {
-                        CodexTaskCard(session: session)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, DesignTokens.Spacing.xl)
+                } else {
+                    ForEach(appState.codexVM.sessions) { session in
+                        NavigationLink {
+                            CodexSessionDetailView(sessionId: session.id)
+                        } label: {
+                            CodexTaskCard(session: session)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .listRowBackground(
-                        DesignTokens.Colors.surfaceMid
-                            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous))
-                    )
                 }
-            }
 
-            if appState.codexVM.isLoading {
-                HStack {
-                    Spacer()
+                if appState.codexVM.isLoading {
                     ProgressView()
                         .tint(DesignTokens.Colors.codexPurple)
-                    Spacer()
+                        .padding()
                 }
-                .listRowBackground(Color.clear)
             }
+            .padding(.horizontal, DesignTokens.Spacing.xs)
         }
-        .listStyle(.plain)
         .navigationTitle("Codex")
         .refreshable {
             appState.codexVM.refreshSessions()

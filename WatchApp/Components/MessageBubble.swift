@@ -9,21 +9,16 @@ struct MessageBubble: View {
             if isUser { Spacer(minLength: 16) }
 
             if !isUser {
-                ZStack {
-                    Circle()
-                        .fill(DesignTokens.Colors.chatGPTGreen.opacity(0.15))
-                        .frame(width: 22, height: 22)
-                    Image(systemName: "brain.head.profile.fill")
-                        .font(.system(size: 12))
-                        .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
-                }
+                Image(systemName: "brain.head.profile.fill")
+                    .font(.system(size: 12))
+                    .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
+                    .frame(width: 20, height: 20)
             }
 
             VStack(alignment: isUser ? .trailing : .leading, spacing: DesignTokens.Spacing.xxs) {
                 HStack(spacing: 0) {
                     Text(message.content)
                         .font(DesignTokens.Typography.body)
-                        .foregroundStyle(.white)
                         .lineLimit(nil)
 
                     if message.isStreaming {
@@ -38,19 +33,15 @@ struct MessageBubble: View {
 
                 Text(message.timestamp.shortTime)
                     .font(DesignTokens.Typography.timestamp)
-                    .foregroundStyle(DesignTokens.Colors.textTertiary)
+                    .foregroundStyle(.tertiary)
                     .padding(.horizontal, DesignTokens.Spacing.xs)
             }
 
             if isUser {
-                ZStack {
-                    Circle()
-                        .fill(DesignTokens.Colors.surfaceElevated)
-                        .frame(width: 22, height: 22)
-                    Image(systemName: "person.fill")
-                        .font(.system(size: 10))
-                        .foregroundStyle(DesignTokens.Colors.textSecondary)
-                }
+                Image(systemName: "person.fill")
+                    .font(.system(size: 10))
+                    .foregroundStyle(.secondary)
+                    .frame(width: 20, height: 20)
             }
 
             if !isUser { Spacer(minLength: 16) }

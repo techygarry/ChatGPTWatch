@@ -39,28 +39,19 @@ extension View {
             .padding(.vertical, DesignTokens.Spacing.sm)
             .background(
                 isUser
-                    ? AnyShapeStyle(DesignTokens.Gradients.greenAccent)
-                    : AnyShapeStyle(DesignTokens.Colors.assistantBg)
+                    ? AnyShapeStyle(DesignTokens.Colors.chatGPTGreen.opacity(0.25))
+                    : AnyShapeStyle(.ultraThinMaterial)
             )
             .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
-    }
-
-    func glassCard() -> some View {
-        self
-            .padding(DesignTokens.Spacing.md)
-            .background(DesignTokens.Colors.surfaceMid)
-            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
-            .overlay(
-                RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous)
-                    .strokeBorder(DesignTokens.Colors.glassStroke, lineWidth: 0.5)
-            )
     }
 
     func cardStyle() -> some View {
-        glassCard()
+        self
+            .padding(DesignTokens.Spacing.md)
+            .glassEffect(.regular, in: .rect(cornerRadius: DesignTokens.Radius.medium))
     }
 
-    func accentGlow(color: Color, radius: CGFloat = 8) -> some View {
-        self.shadow(color: color.opacity(0.3), radius: radius, y: 2)
+    func glassCard() -> some View {
+        cardStyle()
     }
 }

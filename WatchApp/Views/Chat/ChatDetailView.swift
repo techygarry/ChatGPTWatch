@@ -16,7 +16,6 @@ struct ChatDetailView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Messages
             ScrollView {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.sm) {
                     let msgs = (appState.chatVM.currentConversation?.messages ?? [])
@@ -25,22 +24,16 @@ struct ChatDetailView: View {
                         MessageBubble(message: message)
                     }
 
-                    // Streaming state
                     if localIsStreaming {
                         if !displayedStreamText.isEmpty {
                             HStack(alignment: .top, spacing: DesignTokens.Spacing.xs) {
-                                ZStack {
-                                    Circle()
-                                        .fill(DesignTokens.Colors.chatGPTGreen.opacity(0.15))
-                                        .frame(width: 22, height: 22)
-                                    Image(systemName: "brain.head.profile.fill")
-                                        .font(.system(size: 12))
-                                        .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
-                                }
+                                Image(systemName: "brain.head.profile.fill")
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
+                                    .frame(width: 20, height: 20)
 
                                 Text(displayedStreamText)
                                     .font(DesignTokens.Typography.body)
-                                    .foregroundStyle(.white)
                                     .chatBubbleStyle(isUser: false)
 
                                 Spacer(minLength: 16)
@@ -51,21 +44,17 @@ struct ChatDetailView: View {
                     }
 
                     if let error = appState.chatVM.errorMessage {
-                        HStack(spacing: DesignTokens.Spacing.xs) {
-                            Image(systemName: "exclamationmark.circle.fill")
-                                .font(.caption2)
-                            Text(error)
-                                .font(DesignTokens.Typography.caption)
-                        }
-                        .foregroundStyle(DesignTokens.Colors.errorRed)
-                        .padding(DesignTokens.Spacing.sm)
+                        Label(error, systemImage: "exclamationmark.circle.fill")
+                            .font(DesignTokens.Typography.caption)
+                            .foregroundStyle(DesignTokens.Colors.errorRed)
+                            .padding(DesignTokens.Spacing.sm)
                     }
                 }
                 .padding(.horizontal, DesignTokens.Spacing.xs)
                 .padding(.bottom, DesignTokens.Spacing.sm)
             }
 
-            // Input Bar
+            // Input bar
             HStack(spacing: DesignTokens.Spacing.sm) {
                 if localIsStreaming {
                     Button {
@@ -85,11 +74,8 @@ struct ChatDetailView: View {
                         Image(systemName: "mic.fill")
                             .font(.system(size: 12))
                             .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
-                            .frame(width: 26, height: 26)
-                            .background(DesignTokens.Colors.chatGPTGreen.opacity(0.12))
-                            .clipShape(Circle())
                     }
-                    .buttonStyle(.plain)
+                    .buttonStyle(.glass)
 
                     TextField("Message", text: $inputText)
                         .font(DesignTokens.Typography.body)
@@ -102,7 +88,7 @@ struct ChatDetailView: View {
                             .font(.system(size: 22))
                             .foregroundStyle(
                                 inputText.trimmed.isEmpty
-                                    ? DesignTokens.Colors.textTertiary
+                                    ? Color.secondary
                                     : DesignTokens.Colors.chatGPTGreen
                             )
                     }
@@ -112,15 +98,6 @@ struct ChatDetailView: View {
             }
             .padding(.horizontal, DesignTokens.Spacing.sm)
             .padding(.vertical, DesignTokens.Spacing.xs)
-            .background(
-                DesignTokens.Colors.surfaceMid
-                    .overlay(
-                        Rectangle()
-                            .fill(DesignTokens.Colors.glassStroke)
-                            .frame(height: 0.5),
-                        alignment: .top
-                    )
-            )
         }
         .navigationTitle(appState.chatVM.currentConversation?.title ?? "Chat")
         .navigationBarTitleDisplayMode(.inline)
@@ -137,14 +114,10 @@ struct ChatDetailView: View {
         }
         .onReceive(streamTimer) { _ in
             let streaming = appState.chatVM.isStreaming
-            if streaming != localIsStreaming {
-                localIsStreaming = streaming
-            }
+            if streaming != localIsStreaming { localIsStreaming = streaming }
             if streaming {
                 let text = appState.chatVM.streamedText
-                if text != displayedStreamText {
-                    displayedStreamText = text
-                }
+                if text != displayedStreamText { displayedStreamText = text }
             } else if !displayedStreamText.isEmpty {
                 displayedStreamText = ""
             }

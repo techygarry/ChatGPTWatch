@@ -5,19 +5,15 @@ struct TypingIndicator: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: DesignTokens.Spacing.xs) {
-            ZStack {
-                Circle()
-                    .fill(DesignTokens.Colors.chatGPTGreen.opacity(0.15))
-                    .frame(width: 22, height: 22)
-                Image(systemName: "brain.head.profile.fill")
-                    .font(.system(size: 12))
-                    .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
-            }
+            Image(systemName: "brain.head.profile.fill")
+                .font(.system(size: 12))
+                .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
+                .frame(width: 20, height: 20)
 
             HStack(spacing: 5) {
                 ForEach(0..<3, id: \.self) { index in
                     Circle()
-                        .fill(DesignTokens.Colors.chatGPTGreen.opacity(animating ? 0.9 : 0.3))
+                        .fill(DesignTokens.Colors.chatGPTGreen.opacity(animating ? 0.8 : 0.3))
                         .frame(width: 5, height: 5)
                         .offset(y: animating ? -3 : 0)
                         .animation(
@@ -30,12 +26,7 @@ struct TypingIndicator: View {
             }
             .padding(.horizontal, DesignTokens.Spacing.md)
             .padding(.vertical, DesignTokens.Spacing.sm)
-            .background(DesignTokens.Colors.assistantBg)
-            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous))
-            .overlay(
-                RoundedRectangle(cornerRadius: DesignTokens.Radius.medium, style: .continuous)
-                    .strokeBorder(DesignTokens.Colors.glassStroke, lineWidth: 0.5)
-            )
+            .glassEffect(.regular, in: .rect(cornerRadius: DesignTokens.Radius.medium))
 
             Spacer(minLength: 16)
         }

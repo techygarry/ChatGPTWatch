@@ -14,25 +14,24 @@ struct CodexSessionDetailView: View {
         ScrollView {
             if let session {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.md) {
-                    // Status Header
+                    // Status
                     HStack {
                         StatusBadge(status: session.status)
                         Spacer()
                         Text(session.createdAt.relativeString)
                             .font(DesignTokens.Typography.timestamp)
-                            .foregroundStyle(DesignTokens.Colors.textTertiary)
+                            .foregroundStyle(.tertiary)
                     }
 
-                    // Task Input
+                    // Task
                     VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
                         Label("Task", systemImage: "text.bubble.fill")
                             .font(DesignTokens.Typography.micro)
                             .foregroundStyle(DesignTokens.Colors.codexPurple)
                         Text(session.input)
                             .font(DesignTokens.Typography.body)
-                            .foregroundStyle(.white)
                     }
-                    .glassCard()
+                    .cardStyle()
 
                     // Output
                     if !session.output.isEmpty {
@@ -46,7 +45,6 @@ struct CodexSessionDetailView: View {
                                 case .message:
                                     Text(item.content)
                                         .font(DesignTokens.Typography.body)
-                                        .foregroundStyle(.white)
                                 case .code:
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         Text(item.content)
@@ -54,12 +52,8 @@ struct CodexSessionDetailView: View {
                                             .foregroundStyle(DesignTokens.Colors.chatGPTGreen)
                                             .padding(DesignTokens.Spacing.sm)
                                     }
-                                    .background(Color.black.opacity(0.4))
+                                    .background(.black.opacity(0.3))
                                     .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous)
-                                            .strokeBorder(DesignTokens.Colors.chatGPTGreen.opacity(0.15), lineWidth: 0.5)
-                                    )
                                 case .fileChange:
                                     Text(item.content)
                                         .font(DesignTokens.Typography.code)
@@ -67,10 +61,10 @@ struct CodexSessionDetailView: View {
                                 }
                             }
                         }
-                        .glassCard()
+                        .cardStyle()
                     }
 
-                    // File Changes
+                    // Files Changed
                     if !session.filesChanged.isEmpty {
                         VStack(alignment: .leading, spacing: DesignTokens.Spacing.sm) {
                             Label("Files Changed", systemImage: "doc.on.doc.fill")
@@ -78,72 +72,57 @@ struct CodexSessionDetailView: View {
                                 .foregroundStyle(DesignTokens.Colors.warningAmber)
 
                             ForEach(session.filesChanged) { file in
-                                VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
-                                    HStack(spacing: DesignTokens.Spacing.sm) {
-                                        Image(systemName: file.action.symbol)
-                                            .font(.system(size: 9))
-                                            .foregroundStyle(fileActionColor(file.action))
-                                        Text(file.path)
-                                            .font(DesignTokens.Typography.code)
-                                            .foregroundStyle(.white)
-                                            .lineLimit(1)
-                                    }
+                                HStack(spacing: DesignTokens.Spacing.sm) {
+                                    Image(systemName: file.action.symbol)
+                                        .font(.caption2)
+                                        .foregroundStyle(fileActionColor(file.action))
+                                    Text(file.path)
+                                        .font(DesignTokens.Typography.code)
+                                        .lineLimit(1)
+                                }
 
-                                    if let diff = file.diff {
-                                        Text(diff)
-                                            .font(DesignTokens.Typography.code)
-                                            .foregroundStyle(DesignTokens.Colors.textSecondary)
-                                            .padding(DesignTokens.Spacing.xs)
-                                            .background(Color.black.opacity(0.3))
-                                            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous))
-                                    }
+                                if let diff = file.diff {
+                                    Text(diff)
+                                        .font(DesignTokens.Typography.code)
+                                        .foregroundStyle(.secondary)
+                                        .padding(DesignTokens.Spacing.xs)
+                                        .background(.black.opacity(0.2))
+                                        .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous))
                                 }
                             }
                         }
-                        .glassCard()
+                        .cardStyle()
                     }
 
-                    // Processing indicator
+                    // Progress
                     if !session.status.isTerminal {
                         VStack(spacing: DesignTokens.Spacing.sm) {
                             ProgressView()
                                 .tint(DesignTokens.Colors.codexPurple)
                             Text("Processing...")
                                 .font(DesignTokens.Typography.caption)
-                                .foregroundStyle(DesignTokens.Colors.textSecondary)
+                                .foregroundStyle(.secondary)
                         }
                         .frame(maxWidth: .infinity)
-                        .glassCard()
+                        .cardStyle()
                     }
 
                     // Actions
                     HStack(spacing: DesignTokens.Spacing.sm) {
                         if !session.status.isTerminal {
-                            Button {
+                            Button("Cancel") {
                                 appState.codexVM.cancelTask(id: sessionId)
-                            } label: {
-                                HStack(spacing: DesignTokens.Spacing.xs) {
-                                    Image(systemName: "xmark")
-                                        .font(.system(size: 9, weight: .bold))
-                                    Text("Cancel")
-                                        .font(DesignTokens.Typography.micro)
-                                }
                             }
-                            .buttonStyle(.bordered)
+                            .font(DesignTokens.Typography.micro)
+                            .buttonStyle(.glass)
                             .tint(DesignTokens.Colors.errorRed)
                         }
 
-                        Button {
+                        Button("Refresh") {
                             appState.codexVM.loadSession(id: sessionId)
-                        } label: {
-                            HStack(spacing: DesignTokens.Spacing.xs) {
-                                Image(systemName: "arrow.clockwise")
-                                    .font(.system(size: 9, weight: .bold))
-                                Text("Refresh")
-                                    .font(DesignTokens.Typography.micro)
-                            }
                         }
-                        .buttonStyle(.bordered)
+                        .font(DesignTokens.Typography.micro)
+                        .buttonStyle(.glass)
                         .tint(DesignTokens.Colors.codexBlue)
                     }
                 }
@@ -154,7 +133,7 @@ struct CodexSessionDetailView: View {
                         .tint(DesignTokens.Colors.codexPurple)
                     Text("Loading...")
                         .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(DesignTokens.Colors.textSecondary)
+                        .foregroundStyle(.secondary)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.top, DesignTokens.Spacing.xl)
@@ -162,12 +141,8 @@ struct CodexSessionDetailView: View {
         }
         .navigationTitle("Task")
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            appState.codexVM.loadSession(id: sessionId)
-        }
-        .onDisappear {
-            appState.codexVM.stopPolling()
-        }
+        .onAppear { appState.codexVM.loadSession(id: sessionId) }
+        .onDisappear { appState.codexVM.stopPolling() }
     }
 
     private func fileActionColor(_ action: FileAction) -> Color {

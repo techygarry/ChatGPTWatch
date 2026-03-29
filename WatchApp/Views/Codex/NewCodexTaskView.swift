@@ -8,7 +8,6 @@ struct NewCodexTaskView: View {
     @State private var selectedProject: ProjectDir = .techyProjects
     @State private var showInstructions = false
     @State private var navigateToDetail = false
-    @State private var appear = false
     @FocusState private var isInputFocused: Bool
 
     enum ProjectDir: String, CaseIterable, Identifiable {
@@ -39,33 +38,10 @@ struct NewCodexTaskView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: DesignTokens.Spacing.md) {
-                // Hero Header
-                VStack(spacing: DesignTokens.Spacing.sm) {
-                    ZStack {
-                        Circle()
-                            .fill(DesignTokens.Colors.codexPurple.opacity(0.12))
-                            .frame(width: 48, height: 48)
-                            .blur(radius: 5)
-
-                        Circle()
-                            .fill(DesignTokens.Colors.surfaceMid)
-                            .frame(width: 40, height: 40)
-                            .overlay(
-                                Circle()
-                                    .strokeBorder(DesignTokens.Gradients.purpleAccent, lineWidth: 1.5)
-                            )
-
-                        Image(systemName: "chevron.left.forwardslash.chevron.right")
-                            .font(.system(size: 16, weight: .medium))
-                            .foregroundStyle(DesignTokens.Gradients.purpleAccent)
-                    }
-                    .scaleEffect(appear ? 1.0 : 0.7)
-                    .opacity(appear ? 1.0 : 0)
-
-                    Text("New Codex Task")
-                        .font(DesignTokens.Typography.sectionHeader)
-                        .foregroundStyle(.white)
-                }
+                // Header
+                Image(systemName: "chevron.left.forwardslash.chevron.right")
+                    .font(.system(size: 26))
+                    .foregroundStyle(DesignTokens.Colors.codexPurple)
 
                 // Project
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
@@ -79,21 +55,21 @@ struct NewCodexTaskView: View {
                     }
                     .pickerStyle(.navigationLink)
                 }
-                .glassCard()
+                .cardStyle()
 
                 // Task Input
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
                     Text("What should Codex do?")
                         .font(DesignTokens.Typography.micro)
-                        .foregroundStyle(DesignTokens.Colors.textSecondary)
+                        .foregroundStyle(.secondary)
                     TextField("e.g., Fix the login bug...", text: $taskInput, axis: .vertical)
                         .font(DesignTokens.Typography.body)
                         .focused($isInputFocused)
                         .lineLimit(2...6)
                 }
-                .glassCard()
+                .cardStyle()
 
-                // Custom Instructions toggle
+                // Instructions toggle
                 Button {
                     withAnimation(DesignTokens.Animation.spring) {
                         showInstructions.toggle()
@@ -109,7 +85,7 @@ struct NewCodexTaskView: View {
                             .font(.system(size: 8))
                             .rotationEffect(.degrees(showInstructions ? 90 : 0))
                     }
-                    .foregroundStyle(DesignTokens.Colors.textSecondary)
+                    .foregroundStyle(.secondary)
                 }
                 .buttonStyle(.plain)
 
@@ -117,43 +93,29 @@ struct NewCodexTaskView: View {
                     TextField("System instructions...", text: $instructions, axis: .vertical)
                         .font(DesignTokens.Typography.body)
                         .lineLimit(2...4)
-                        .glassCard()
-                        .transition(.asymmetric(
-                            insertion: .opacity.combined(with: .move(edge: .top)).combined(with: .scale(scale: 0.96)),
-                            removal: .opacity
-                        ))
+                        .cardStyle()
+                        .transition(.opacity.combined(with: .scale(scale: 0.96)))
                 }
 
                 // Templates
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.sm) {
                     Text("Templates")
                         .font(DesignTokens.Typography.micro)
-                        .foregroundStyle(DesignTokens.Colors.textSecondary)
+                        .foregroundStyle(.secondary)
 
                     ForEach(taskTemplates, id: \.title) { template in
-                        Button {
-                            taskInput = template.prompt
-                        } label: {
+                        Button { taskInput = template.prompt } label: {
                             HStack(spacing: DesignTokens.Spacing.sm) {
                                 Image(systemName: template.icon)
                                     .font(.system(size: 10))
-                                    .foregroundStyle(DesignTokens.Colors.codexPurple.opacity(0.7))
-                                    .frame(width: 16)
+                                    .foregroundStyle(DesignTokens.Colors.codexPurple)
+                                    .frame(width: 14)
                                 Text(template.title)
                                     .font(DesignTokens.Typography.caption)
-                                    .foregroundStyle(.white)
                                 Spacer()
-                                Image(systemName: "chevron.right")
-                                    .font(.system(size: 8))
-                                    .foregroundStyle(DesignTokens.Colors.textTertiary)
                             }
                             .padding(DesignTokens.Spacing.sm)
-                            .background(DesignTokens.Colors.surfaceMid)
-                            .clipShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: DesignTokens.Radius.small, style: .continuous)
-                                    .strokeBorder(DesignTokens.Colors.glassStroke, lineWidth: 0.5)
-                            )
+                            .glassEffect(.regular, in: .rect(cornerRadius: DesignTokens.Radius.small))
                         }
                         .buttonStyle(.plain)
                     }
@@ -165,9 +127,7 @@ struct NewCodexTaskView: View {
                 } label: {
                     HStack(spacing: DesignTokens.Spacing.sm) {
                         if appState.codexVM.isCreating {
-                            ProgressView()
-                                .tint(.white)
-                                .scaleEffect(0.8)
+                            ProgressView().scaleEffect(0.8)
                         } else {
                             Image(systemName: "play.fill")
                                 .font(.system(size: 11))
@@ -178,19 +138,14 @@ struct NewCodexTaskView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, DesignTokens.Spacing.xs)
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.glassProminent)
                 .tint(DesignTokens.Colors.codexPurple)
                 .disabled(taskInput.trimmed.isEmpty || appState.codexVM.isCreating)
-                .accentGlow(color: DesignTokens.Colors.codexPurple)
 
                 if let error = appState.codexVM.errorMessage {
-                    HStack(spacing: DesignTokens.Spacing.xs) {
-                        Image(systemName: "exclamationmark.circle.fill")
-                            .font(.caption2)
-                        Text(error)
-                            .font(DesignTokens.Typography.caption)
-                    }
-                    .foregroundStyle(DesignTokens.Colors.errorRed)
+                    Label(error, systemImage: "exclamationmark.circle.fill")
+                        .font(DesignTokens.Typography.caption)
+                        .foregroundStyle(DesignTokens.Colors.errorRed)
                 }
             }
             .padding(.horizontal, DesignTokens.Spacing.xs)
@@ -200,11 +155,6 @@ struct NewCodexTaskView: View {
         .navigationDestination(isPresented: $navigateToDetail) {
             if let session = appState.codexVM.currentSession {
                 CodexSessionDetailView(sessionId: session.id)
-            }
-        }
-        .onAppear {
-            withAnimation(DesignTokens.Animation.bouncy.delay(0.1)) {
-                appear = true
             }
         }
     }
